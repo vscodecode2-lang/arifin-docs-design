@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --font-inter: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes sectionTextReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.section-text-reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  will-change: opacity, transform;
+}
+
+.section-text-reveal.is-visible {
+  animation: sectionTextReveal 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.section-text-reveal-delay-1.is-visible {
+  animation-delay: 0.08s;
+}
+
+.section-text-reveal-delay-2.is-visible {
+  animation-delay: 0.16s;
+}
+
+.section-text-reveal-delay-3.is-visible {
+  animation-delay: 0.24s;
+}
+
+.section-text-reveal-delay-4.is-visible {
+  animation-delay: 0.32s;
+}
