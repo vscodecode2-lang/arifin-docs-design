@@ -42,9 +42,9 @@ const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: "Informasi",
     links: [
-      { label: "Tentang Kami", href: "#tentang" },
-      { label: "Kebijakan Privasi", href: "#privasi" },
-      { label: "Syarat & Ketentuan", href: "#syarat" },
+      { label: "Tentang Kami", href: "/tentang" },
+      { label: "Kebijakan Privasi", href: "/kebijakan-privasi" },
+      { label: "Syarat & Ketentuan", href: "/syarat-ketentuan" },
       { label: "Login Admin", href: "/login" },
     ],
   },

@@ -11,6 +11,19 @@ export const metadata: Metadata = {
   title: "Cara Kerja — Mudah, Cepat, dan Terpercaya",
   description:
     "Pelajari bagaimana cara memesan layanan dokumen profesional di Arifin Docs & Design. Proses mudah, cepat, dan aman dalam 4 langkah sederhana.",
+  alternates: { canonical: "/cara-kerja" },
+  openGraph: {
+    title: "Cara Kerja Layanan | Arifin Docs & Design",
+    description: "Pelajari alur pemesanan layanan dokumen profesional dalam 4 langkah sederhana.",
+    type: "website",
+    locale: "id_ID",
+    url: "https://arifindocs.id/cara-kerja",
+  },
+  twitter: {
+    title: "Cara Kerja Layanan | Arifin Docs & Design",
+    description: "Pelajari alur pemesanan layanan dokumen profesional dalam 4 langkah sederhana.",
+    card: "summary_large_image",
+  },
 };
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -155,8 +168,43 @@ const GUARANTEES = [
 // ─── Page ──────────────────────────────────────────────────────────────────────
 
 export default function CaraKerjaPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Bagaimana cara melakukan pembayaran?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pembayaran dilakukan via transfer bank atau e-wallet setelah pesanan dikonfirmasi melalui WhatsApp.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah data pribadi saya aman?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ya. Data Anda disimpan dan dikelola dengan aman sesuai kebutuhan layanan yang kami proses.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Berapa lama proses pengerjaan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tergantung layanan, namun kami berupaya menyelesaikan dokumen secepat mungkin sesuai deadline yang disepakati.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       {/* ══════════════════════════════════════════
           HERO

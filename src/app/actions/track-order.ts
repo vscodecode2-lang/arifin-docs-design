@@ -1,7 +1,9 @@
 "use server";
 
+import { headers } from "next/headers";
 import { createServerSupabaseClient } from "@/lib/supabase-server";
 import type { OrderStatus } from "@/lib/order-utils";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export interface OrderTrackResult {
   success: boolean;
@@ -41,6 +43,19 @@ export async function trackOrder(
     return {
       success: false,
       error: 'Format kode tidak valid. Contoh yang benar: ADC-K7M2PQ',
+    };
+  }
+
+  const headerStore = await headers();
+  const forwardedFor = headerStore.get("x-forwarded-for") ?? "unknown";
+  const ipKey = forwardedFor.split(",")[0]?.trim() ?? "unknown";
+  const rateLimitKey = `track:${ipKey}`;
+
+  const allowed = await checkRateLimit(rateLimitKey, 5, 60_000);
+  if (!allowed) {
+    return {
+      success: false,
+      error: "Terlalu banyak percobaan tracking. Tunggu 1 menit lalu coba lagi.",
     };
   }
 

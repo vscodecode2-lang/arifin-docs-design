@@ -112,9 +112,9 @@ const SERVICES: ServiceCard[] = [
   },
   {
     icon: <GraduationCap className="h-6 w-6" />,
-    title: "Joki Tugas & Pendampingan Akademik",
+    title: "Pendampingan Akademik Profesional",
     description:
-      "Selesaikan tugas dan proyek akademik dengan lebih terarah melalui layanan pendampingan yang disesuaikan dengan kebutuhan Anda. Kami membantu penyusunan, penyuntingan, dan pengembangan makalah, proposal, laporan PKL, presentasi, website, coding, serta materi akademik lainnya agar lebih rapi, sistematis, dan siap dipresentasikan. Mulai Rp30.000.",
+      "Selesaikan kebutuhan akademik Anda dengan layanan pendampingan profesional untuk tugas, presentasi, makalah, proposal, laporan, dan dokumentasi. Kami membantu menyusun dokumen secara rapi, sistematis, dan siap presentasi. Mulai Rp30.000.",
     features: ["Pendampingan sesuai kebutuhan dan target penyelesaian",
     "Dokumen atau materi disusun rapi, sistematis, dan mudah dipahami",
     "Revisi hingga deadline + konsultasi tanpa biaya"],
@@ -298,7 +298,7 @@ export default function HomePage() {
               <div className="section-text-reveal section-text-reveal-delay-4 mt-8 flex flex-wrap gap-3">
                 <Link
                   href="#layanan"
-                  className="group relative overflow-hidden inline-flex items-center gap-2 rounded-xl border border-blue-400/60 bg-transparent px-6 py-3 text-sm font-bold text-blue-700 shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-xl hover:shadow-blue-500/40"
+                  className="group relative overflow-hidden inline-flex items-center gap-2 rounded-xl border border-blue-400/60 bg-transparent px-6 py-3 text-sm font-bold text-blue-700 shadow-lg shadow-blue-600/20 transition-all duration-300 active:scale-95 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-xl hover:shadow-blue-500/40"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                   <span className="relative z-10">Lihat Layanan Jasa</span>
@@ -306,7 +306,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/testimoni"
-                  className="group relative overflow-hidden inline-flex items-center gap-2 rounded-xl border border-emerald-400/60 bg-transparent px-6 py-3 text-sm font-semibold text-emerald-700 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-600 hover:text-white hover:shadow-lg hover:shadow-emerald-400/30"
+                  className="group relative overflow-hidden inline-flex items-center gap-2 rounded-xl border border-emerald-400/60 bg-transparent px-6 py-3 text-sm font-semibold text-emerald-700 backdrop-blur-sm transition-all duration-300 active:scale-95 hover:-translate-y-1 hover:bg-emerald-600 hover:text-white hover:shadow-lg hover:shadow-emerald-400/30"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                   <span className="relative z-10">Lihat Testimoni</span>

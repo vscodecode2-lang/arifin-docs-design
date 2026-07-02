@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Arifin Docs & Design",
   },
   description:
-    "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Joki Tugas, dan Data Entry profesional. Cepat, aman, dan terpercaya.",
+    "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Pendampingan Akademik, dan Data Entry profesional. Cepat, aman, dan terpercaya.",
   keywords: [
     "CV ATS Friendly",
     "Surat Lamaran Profesional",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     title: "Arifin Docs & Design — Jasa Dokumen Profesional",
     description:
-      "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Joki Tugas, dan Data Entry profesional. Cepat, aman, dan terpercaya.",
+      "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Pendampingan Akademik, dan Data Entry profesional. Cepat, aman, dan terpercaya.",
     images: [OG_IMAGE],
   },
 
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     creator: "@arifindocs",
     title: "Arifin Docs & Design — Jasa Dokumen Profesional",
     description:
-      "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Joki Tugas, dan Data Entry profesional. Cepat, aman, dan terpercaya.",
+      "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Pendampingan Akademik, dan Data Entry profesional. Cepat, aman, dan terpercaya.",
     images: [OG_IMAGE],
   },
 };

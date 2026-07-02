@@ -1,5 +1,37 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
+const inMemoryBuckets = new Map<string, { count: number; expiresAt: number }>();
+
+function cleanupExpiredBuckets(now: number) {
+  for (const [key, bucket] of inMemoryBuckets.entries()) {
+    if (bucket.expiresAt <= now) {
+      inMemoryBuckets.delete(key);
+    }
+  }
+}
+
+export async function checkRateLimit(
+  key: string,
+  limit: number,
+  windowMs: number
+): Promise<boolean> {
+  const now = Date.now();
+  cleanupExpiredBuckets(now);
+
+  const existing = inMemoryBuckets.get(key);
+  if (!existing) {
+    inMemoryBuckets.set(key, { count: 1, expiresAt: now + windowMs });
+    return true;
+  }
+
+  if (existing.count >= limit) {
+    return false;
+  }
+
+  existing.count += 1;
+  return true;
+}
+
 /**
  * Cek apakah email yang sama sudah pernah submit (insert ke tabel `clients`)
  * dalam window waktu tertentu.

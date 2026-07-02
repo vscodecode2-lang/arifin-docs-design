@@ -185,13 +185,6 @@ export function Navbar() {
         {/* ── Desktop CTA ── */}
         <div className="hidden items-center gap-3 lg:flex">
           <Link
-            href="/login"
-            className="flex items-center gap-1.5 rounded-lg border border-blue-200 px-4 py-2 text-sm font-medium text-blue-700 transition-all hover:bg-blue-50 hover:border-blue-300"
-          >
-            <Lock size={14} />
-            Login Admin
-          </Link>
-          <Link
             href="#layanan"
             className="rounded-lg bg-blue-700 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-800 hover:shadow-md active:scale-95"
           >
@@ -281,14 +274,6 @@ export function Navbar() {
 
           {/* Mobile CTA */}
           <div className="border-t border-blue-100 pt-3 space-y-2">
-            <Link
-              href="/login"
-              onClick={closeMenu}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-blue-200 py-2.5 text-sm font-medium text-blue-700 hover:bg-blue-50"
-            >
-              <Lock size={14} />
-              Login Admin
-            </Link>
             <Link
               href="#layanan"
               onClick={closeMenu}

@@ -19,7 +19,7 @@ export const BUSINESS_INFO = {
 export const DEFAULT_PRICES: Record<string, number> = {
   "CV":          35_000,
   "Lamaran":     25_000,
-  "Paket Hemat": 15_000,
+  "Paket Hemat": 40_000,
   "Legal":       50_000,
   "NPWP":        30_000,
   "Akademik":    0,

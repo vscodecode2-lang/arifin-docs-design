@@ -61,5 +61,5 @@ export const INITIAL_FORM: FormState = {
   tone_surat: "", job_keywords: "", catatan: "",
 };
 
-export const BASE_PRICE = 15000;
+export const BASE_PRICE = 40000;
 export const QNA_ADDON_PRICE = 10000;

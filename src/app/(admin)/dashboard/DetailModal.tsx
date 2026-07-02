@@ -329,7 +329,7 @@ function RenderPaketHemat({ detail }: { detail: Record<string, unknown> }) {
         <InfoRow label="Simulasi QnA HRD"
           value={detail.add_qna_hrd === true ? "Ya — termasuk QnA HRD custom (+Rp 10.000)" : "Tidak"} />
         <InfoRow label="Total Harga"
-          value={detail.add_qna_hrd === true ? "Rp 25.000" : "Rp 15.000"} />
+          value={detail.add_qna_hrd === true ? "Rp 50.000" : "Rp 40.000"} />
       </div>
 
       {/* Target karir */}
