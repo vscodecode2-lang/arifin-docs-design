@@ -272,7 +272,7 @@ export default function HomePage() {
                 </span>
               </h1>
 
-              <p className="section-text-reveal section-text-reveal-delay-2 mt-6 text-base leading-relaxed text-slate-900 sm:text-lg">
+              <p className="section-text-reveal section-text-reveal-delay-2 mt-6 font-[family-name:var(--font-dm-sans)] text-base font-500 leading-relaxed text-slate-900 sm:text-lg">
                 Dari CV ATS Friendly hingga surat legal — kami bantu Anda tampil
                 profesional di setiap tahap karir dan administrasi. Cepat, aman,
                 dan dipercaya ratusan klien.

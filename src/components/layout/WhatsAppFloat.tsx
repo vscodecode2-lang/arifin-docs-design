@@ -179,7 +179,8 @@ export function WhatsAppFloat() {
           height: 34px;
           border-radius: 50%;
           overflow: hidden;
-          background: #1e3a8a;
+          background: #fff;
+          border: 1px solid rgba(15, 23, 42, 0.08);
         }
         .wa-bubble-name {
           font-size: 11px;
@@ -201,19 +202,20 @@ export function WhatsAppFloat() {
           width: 56px;
           height: 56px;
           border-radius: 50%;
-          background: #25d366;
-          color: white;
+          background: #fff;
+          color: #25d366;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 16px rgba(37,211,102,.4), 0 2px 6px rgba(0,0,0,.12);
+          box-shadow: 0 4px 16px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
           transition: transform .18s ease, box-shadow .18s ease;
           text-decoration: none;
           cursor: pointer;
+          border: 1px solid rgba(37,211,102,.16);
         }
         .wa-btn:hover {
           transform: scale(1.08);
-          box-shadow: 0 6px 24px rgba(37,211,102,.55), 0 2px 8px rgba(0,0,0,.14);
+          box-shadow: 0 6px 24px rgba(37,211,102,.18), 0 2px 8px rgba(0,0,0,.12);
         }
         .wa-btn:active {
           transform: scale(0.96);
@@ -228,7 +230,7 @@ export function WhatsAppFloat() {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          background: rgba(37,211,102,.35);
+          background: rgba(37,211,102,.2);
           animation: wa-pulse-ring 2s ease-out infinite;
         }
         @keyframes wa-pulse-ring {
