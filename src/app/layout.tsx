@@ -16,7 +16,7 @@ const dmSans = DM_Sans({
 });
 
 // Base URL satu tempat — dipakai untuk canonical, OG, dan Twitter
-const BASE_URL = "https://arifindocs.id";
+const BASE_URL = "https://arifin-docs-design.vercel.app";
 
 // OG Image — di-generate oleh src/app/opengraph-image.tsx (1200x630)
 const OG_IMAGE = {
