@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/metadata";
 import { ComingSoonAndTestimoni } from "@/components/home/ComingSoonAndTestimoni";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
@@ -157,7 +158,7 @@ const STATS: StatItem[] = [
 
 // ─── Structured Data (JSON-LD) ───────────────────────────────────────────────
 
-const BASE_URL = "https://arifindocs.id";
+const BASE_URL = SITE_URL;
 
 const jsonLdLocalBusiness = {
   "@context": "https://schema.org",

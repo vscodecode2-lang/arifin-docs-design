@@ -6,6 +6,7 @@ import {
   CheckCircle2, ArrowRight, Star,
 } from "lucide-react";
 import { FaqAccordion } from "./Faqaccordion";
+import { SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: "Cara Kerja — Mudah, Cepat, dan Terpercaya",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: "Pelajari alur pemesanan layanan dokumen profesional dalam 4 langkah sederhana.",
     type: "website",
     locale: "id_ID",
-    url: "https://arifindocs.id/cara-kerja",
+    url: `${SITE_URL}/cara-kerja`,
   },
   twitter: {
     title: "Cara Kerja Layanan | Arifin Docs & Design",

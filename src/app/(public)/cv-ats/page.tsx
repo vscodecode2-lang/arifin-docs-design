@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CvAtsForm } from "./CvAtsForm";
+import { SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: "CV ATS Friendly — Lolos Sistem Rekrutmen Otomatis",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     description: "CV profesional yang lolos sistem ATS. Dioptimasi dengan keyword industri terkini.",
     type: "website",
     locale: "id_ID",
-    url: "https://arifindocs.id/cv-ats",
+    url: `${SITE_URL}/cv-ats`,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "CV ATS Friendly — Lolos Sistem ATS | Arifin Docs & Design" }],
   },
   twitter: {

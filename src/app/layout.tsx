@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, DM_Sans } from "next/font/google";
+import { SITE_URL } from "@/lib/metadata";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,7 +17,7 @@ const dmSans = DM_Sans({
 });
 
 // Base URL satu tempat — dipakai untuk canonical, OG, dan Twitter
-const BASE_URL = "https://arifin-docs-design.vercel.app";
+const BASE_URL = SITE_URL;
 
 // OG Image — di-generate oleh src/app/opengraph-image.tsx (1200x630)
 const OG_IMAGE = {
@@ -78,6 +79,9 @@ export const metadata: Metadata = {
     description:
       "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Pendampingan Akademik, dan Data Entry profesional. Cepat, aman, dan terpercaya.",
     images: [OG_IMAGE],
+  },
+  verification: {
+    google: "LmN-s5IlX_iZhRJ2E9gOwVnBVFRW66Awx5f1FFj_L24",
   },
 };
 

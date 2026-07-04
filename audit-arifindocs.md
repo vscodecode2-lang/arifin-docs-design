@@ -2,7 +2,7 @@
 # 📋 Laporan Audit Website --- Arifin Docs & Design
 
 ::: sub
-URL: https://arifin-docs-design.vercel.app  \|  Tanggal: 1 Juli 2026
+URL: https://arifindocs.vercel.app  \|  Tanggal: 1 Juli 2026
  \|  Framework: Next.js 16 / Supabase / Vercel
 :::
 :::
@@ -892,5 +892,5 @@ lebih aman
 :::
 
 Laporan Audit --- Arifin Docs & Design  \| 
-arifin-docs-design.vercel.app  \|  1 Juli 2026
+arifindocs.vercel.app  \|  1 Juli 2026
 :::

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PaketHematForm } from "./PaketHematForm";
+import { SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: "Paket Siap Kerja — CV ATS + Surat Lamaran Rp 40.000",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: "CV ATS + Surat Lamaran mulai Rp 40.000. Cukup isi satu formulir, hasil profesional.",
     type: "website",
     locale: "id_ID",
-    url: "https://arifindocs.id/paket-hemat",
+    url: `${SITE_URL}/paket-hemat`,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Paket Siap Kerja — CV ATS + Surat Lamaran | Arifin Docs & Design" }],
   },
   twitter: {
