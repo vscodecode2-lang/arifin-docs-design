@@ -18,6 +18,12 @@ export const SERVICE_QUESTIONS: Record<string, RatingQuestion[]> = {
     { id: "kecepatan",        label: "Kecepatan pengerjaan" },
     { id: "responsivitas",    label: "Responsivitas & komunikasi admin" },
   ],
+  "Paket Hemat": [
+    { id: "kualitas_cv",      label: "Kualitas desain & keyword ATS CV" },
+    { id: "kualitas_lamaran", label: "Kualitas & personalisasi surat lamaran" },
+    { id: "kecepatan",        label: "Kecepatan pengerjaan" },
+    { id: "responsivitas",    label: "Responsivitas & komunikasi admin" },
+  ],
   Legal: [
     { id: "kejelasan",        label: "Kejelasan & kelengkapan dokumen" },
     { id: "kesesuaian",       label: "Kesesuaian dengan kebutuhan" },
