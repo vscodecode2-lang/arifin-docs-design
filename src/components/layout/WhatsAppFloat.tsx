@@ -70,12 +70,23 @@ export function WhatsAppFloat() {
   const pathname = usePathname() ?? "/";
   const [expanded, setExpanded] = useState(false);
   const [hasHovered, setHasHovered] = useState(false);
-  // Auto-expand sekali setelah 4 detik untuk menarik perhatian
+  const [isMobile, setIsMobile] = useState(false);
+  // Auto-expand sekali setelah 4 detik untuk menarik perhatian (desktop only)
   const [autoShown, setAutoShown] = useState(false);
 
-  // Auto-expand setelah 4 detik, tutup otomatis setelah 6 detik
+  // Detect mobile device
   useEffect(() => {
-    if (autoShown) return;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Auto-expand setelah 4 detik HANYA di desktop, tutup otomatis setelah 6 detik
+  useEffect(() => {
+    if (autoShown || isMobile) return;
     const openTimer = setTimeout(() => {
       setExpanded(true);
       setAutoShown(true);
@@ -87,7 +98,7 @@ export function WhatsAppFloat() {
       clearTimeout(openTimer);
       clearTimeout(closeTimer);
     };
-  }, [autoShown]);
+  }, [autoShown, isMobile]);
 
   const handleMouseEnter = useCallback(() => {
     setExpanded(true);
@@ -96,6 +107,17 @@ export function WhatsAppFloat() {
 
   const handleMouseLeave = useCallback(() => {
     setExpanded(false);
+  }, []);
+
+  // Close bubble jika ada form yang sedang di-focus (mencegah gangguan saat input)
+  useEffect(() => {
+    const handleFocusIn = () => {
+      // Jika form input di-focus, tutup bubble otomatis
+      setExpanded(false);
+    };
+
+    document.addEventListener("focusin", handleFocusIn);
+    return () => document.removeEventListener("focusin", handleFocusIn);
   }, []);
 
   const waUrl = getWAUrl(pathname);
@@ -247,13 +269,48 @@ export function WhatsAppFloat() {
         }
 
         /* ── Mobile: geser sedikit ke kiri bawah ── */
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .wa-float-root {
-            bottom: 20px;
-            right: 16px;
+            bottom: 16px;
+            right: 12px;
+          }
+          .wa-btn {
+            width: 48px;
+            height: 48px;
+          }
+          .wa-icon {
+            width: 24px;
+            height: 24px;
           }
           .wa-bubble {
-            max-width: 180px;
+            max-width: 160px;
+            padding: 10px 12px;
+          }
+          .wa-bubble-name {
+            font-size: 10px;
+          }
+          .wa-bubble-msg {
+            font-size: 11px;
+          }
+          .wa-bubble-avatar {
+            width: 30px;
+            height: 30px;
+          }
+          /* Disable pulse animation di mobile agar tidak mengganggu pengisian form */
+          .wa-pulse {
+            animation: none;
+            display: none;
+          }
+          /* Reduce transition smoothness di mobile untuk performa lebih baik */
+          .wa-bubble {
+            transition: opacity 0.15s ease, transform 0.15s ease;
+          }
+          .wa-btn {
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+          }
+          .wa-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(37,211,102,.12), 0 1px 4px rgba(0,0,0,.08);
           }
         }
       `}</style>

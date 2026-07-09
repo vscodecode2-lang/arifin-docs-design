@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PromoSection } from "./paket-hemat/PromoSection";
 import { PriceEstimator } from "@/components/home/PriceEstimator";
+import { TestimoniCvSection } from "@/components/home/TestimoniCvSection";
 import {
   FileText,
   Mail,
@@ -9,10 +10,6 @@ import {
   GraduationCap,
   Database,
   ArrowRight,
-  Star,
-  Users,
-  Award,
-  Clock,
 } from "lucide-react";
 
 import type { Metadata } from "next";
@@ -54,12 +51,6 @@ interface ServiceCard {
   features: string[];
   href: string;
   badge?: string;
-}
-
-interface StatItem {
-  value: string;
-  label: string;
-  icon: React.ReactNode;
 }
 
 // ─── Data ──────────────────────────────────────────────────────────────────
@@ -130,29 +121,6 @@ const SERVICES: ServiceCard[] = [
     "Hasil rapi, akurat, dan melalui quality control sebelum dikirim",
     "Revisi hingga deadline + data dijaga kerahasiaannya"],
     href: "/data-entry",
-  },
-];
-
-const STATS: StatItem[] = [
-  {
-    value: "500+",
-    label: "Klien Terlayani",
-    icon: <Users className="h-5 w-5" />,
-  },
-  {
-    value: "98%",
-    label: "Tingkat Kepuasan",
-    icon: <Star className="h-5 w-5" />,
-  },
-  {
-    value: "6",
-    label: "Jenis Layanan",
-    icon: <Award className="h-5 w-5" />,
-  },
-  {
-    value: "<24 Jam",
-    label: "Rata-rata Pengerjaan",
-    icon: <Clock className="h-5 w-5" />,
   },
 ];
 
@@ -331,24 +299,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          STATS BAR
-      ══════════════════════════════════════════ */}
-      <section className="bg-white py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="section-text-reveal grid grid-cols-2 gap-6 rounded-2xl border border-slate-100 bg-slate-50 p-6 shadow-sm lg:grid-cols-4">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center gap-2 text-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
-                  {stat.icon}
-                </div>
-                <p className="text-2xl font-black text-blue-800">{stat.value}</p>
-                <p className="text-xs font-medium text-slate-500">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimoniCvSection />
 
       {/* ══════════════════════════════════════════
           ESTIMASI HARGA INSTAN
