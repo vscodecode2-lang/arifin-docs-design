@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SuratLamaranForm } from "./SuratLamaranForm";
+import { SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: "Surat Lamaran Profesional — Personal & Memikat HRD",
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
     description: "Surat lamaran personal yang memikat HRD sejak kalimat pertama.",
     type: "website",
     locale: "id_ID",
+    url: `${SITE_URL}/surat-lamaran`,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Surat Lamaran Profesional | Arifin Docs & Design" }],
+  },
+  twitter: {
+    title: "Surat Lamaran Profesional | Arifin Docs & Design",
+    description: "Surat lamaran personal yang memikat HRD sejak kalimat pertama.",
+    card: "summary_large_image",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Surat Lamaran Profesional | Arifin Docs & Design" }],
   },
 };
 

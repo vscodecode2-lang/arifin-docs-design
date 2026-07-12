@@ -32,8 +32,7 @@ export default async function OGImage() {
           display: "flex", alignItems: "center", justifyContent: "center",
           marginBottom: 24, border: "2px solid rgba(255,255,255,0.3)",
         }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoSrc} width={80} height={80} style={{ objectFit: "cover" }} />
+          <img src={logoSrc} width={80} height={80} alt="Arifin Docs & Design" style={{ objectFit: "cover" }} />
         </div>
 
         {/* Brand name */}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LegalForm } from "./LegalForm";
+import { SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: "Surat Legal Profesional — Kuasa, Perjanjian & Pernyataan",
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
     description: "Surat legal profesional untuk kebutuhan administrasi dan bisnis Anda.",
     type: "website",
     locale: "id_ID",
+    url: `${SITE_URL}/legal`,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Surat Legal Profesional | Arifin Docs & Design" }],
+  },
+  twitter: {
+    title: "Surat Legal Profesional | Arifin Docs & Design",
+    description: "Surat legal profesional untuk kebutuhan administrasi dan bisnis Anda.",
+    card: "summary_large_image",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Surat Legal Profesional | Arifin Docs & Design" }],
   },
 };
 

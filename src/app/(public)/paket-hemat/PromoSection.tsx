@@ -8,9 +8,8 @@ const INCLUDES = [
   { icon: "⚡", label: "Pengerjaan Kurang dari 12 Jam", sub: "Di hari kerja" },
 ];
 
-const ADDONS = [
-  { icon: "🎯", label: "Simulasi QnA Interview HRD", price: "+Rp 10.000", sub: "10–15 pertanyaan custom sesuai posisi" },
-];
+// Catatan: info add-on (Simulasi QnA Interview HRD) di-hardcode langsung
+// di JSX bagian bawah, bukan di-map dari sini.
 
 export function PromoSection() {
   return (

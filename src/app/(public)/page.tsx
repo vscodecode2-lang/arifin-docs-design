@@ -148,7 +148,11 @@ const jsonLdLocalBusiness = {
     name: "Indonesia",
   },
   priceRange: "Rp",
-  openingHours: "Mo-Su 08:00-22:00",
+  // Disamakan dengan jadwal live di KontakClient.tsx (sumber kebenaran
+  // jam operasional) — dulu tertulis "Mo-Su 08:00-22:00" yang salah:
+  // klaim buka tiap hari sampai jam 22 padahal Minggu tutup dan Sabtu
+  // baru buka jam 09.00.
+  openingHours: ["Mo-Fr 08:00-21:00", "Sa 09:00-21:00"],
   sameAs: [
     "https://wa.me/6285801193410",
     "https://lynk.id/arifindocspro",

@@ -161,7 +161,7 @@ const GUARANTEES = [
   {
     icon: <Zap className="h-6 w-6" />,
     title: "Respon Cepat",
-    desc: "Admin aktif dan siap merespons pertanyaan di WhatsApp setiap hari pukul 08.00–21.00 WIB.",
+    desc: "Admin aktif dan siap merespons pertanyaan di WhatsApp Senin–Sabtu, pukul 08.00–21.00 WIB.",
     color: "bg-amber-100 text-amber-700",
   },
 ];
