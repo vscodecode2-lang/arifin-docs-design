@@ -6,6 +6,7 @@ import {
   type InvoiceData,
 } from "@/app/actions/invoice-actions";
 import { BUSINESS_INFO, DEFAULT_PRICES, SERVICE_LABELS } from "@/lib/invoice-config";
+import { SITE_URL } from "@/lib/metadata";
 import {
   X, FileText, MessageCircle, Mail, Download,
   CheckCircle2, Loader2, AlertCircle, SkipForward,
@@ -150,11 +151,11 @@ export function InvoiceModal({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError]   = useState("");
 
-  const BASE_URL = typeof window !== "undefined"
-    ? `${window.location.protocol}//${window.location.host}`
-    : "https://arifindocs.id";
-
-  const invoiceUrl = invoice ? `${BASE_URL}/invoice/${invoice.id}` : "";
+  // Invoice URL dikirim langsung ke klien via WA/email, jadi harus selalu
+  // pakai domain production (SITE_URL) — bukan window.location.host, karena
+  // kalau admin generate invoice dari localhost atau preview deployment,
+  // klien bakal dapat link yang rusak.
+  const invoiceUrl = invoice ? `${SITE_URL}/invoice/${invoice.id}` : "";
 
   // ── Handlers ──
 

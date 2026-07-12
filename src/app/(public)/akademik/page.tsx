@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Pendampingan Akademik — Tugas, PPT, Makalah & Skripsi",
   description:
     "Jasa pendampingan akademik: bantuan tugas coding, PPT presentasi, makalah, laporan, hingga skripsi. Deadline terjamin, kualitas profesional, revisi termasuk.",
+  alternates: { canonical: "/akademik" },
   keywords: [
     "jasa tugas kuliah", "jasa coding tugas", "bantuan skripsi",
     "jasa buat PPT", "jasa makalah", "jasa akademik online",

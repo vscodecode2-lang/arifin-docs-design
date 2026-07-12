@@ -67,7 +67,7 @@ const SERVICES: ServiceCard[] = [
     features: ["Optimasi penuh format, struktur & keyword ATS",
     "Disesuaikan dengan posisi pekerjaan yang dilamar",
     "Revisi gratis hingga puas + konsultasi tanpa biaya"],
-    href: "/cv-ats",
+    href: "/layanan/cv-ats",
     badge: "Terlaris",
   },
   {
@@ -78,7 +78,7 @@ const SERVICES: ServiceCard[] = [
     features: [ "Ditulis 100% dari nol sesuai perusahaan & posisi",
     "Surat lamaran + draft email lamaran siap kirim",
     "Revisi gratis hingga sesuai + konsultasi tanpa biaya"],
-    href: "/surat-lamaran",
+    href: "/layanan/surat-lamaran",
   },
   {
     icon: <Building2 className="h-6 w-6" />,
@@ -89,7 +89,7 @@ const SERVICES: ServiceCard[] = [
     "Disusun 100% sesuai kebutuhan & tujuan dokumen",
     "File PDF & DOCX siap diedit, dicetak, dan digunakan",
     "Revisi gratis hingga sesuai + konsultasi tanpa biaya"],
-    href: "/legal",
+    href: "/layanan/legal",
   },
   {
     icon: <CreditCard className="h-6 w-6" />,
@@ -99,7 +99,7 @@ const SERVICES: ServiceCard[] = [
     features: [ "Pendampingan hingga NPWP selesai diterbitkan",
   "Tidak perlu antre & proses lebih praktis",
   "Data diproses dengan aman + konsultasi gratis"],
-    href: "/npwp",
+    href: "/layanan/npwp",
     badge: "Populer",
   },
   {
@@ -110,7 +110,7 @@ const SERVICES: ServiceCard[] = [
     features: ["Pendampingan sesuai kebutuhan dan target penyelesaian",
     "Dokumen atau materi disusun rapi, sistematis, dan mudah dipahami",
     "Revisi hingga deadline + konsultasi tanpa biaya"],
-    href: "/akademik",
+    href: "/layanan/akademik",
   },
   {
     icon: <Database className="h-6 w-6" />,
@@ -120,7 +120,7 @@ const SERVICES: ServiceCard[] = [
     features: [  "Input data & konversi dokumen sesuai kebutuhan tanpa minimal order",
     "Hasil rapi, akurat, dan melalui quality control sebelum dikirim",
     "Revisi hingga deadline + data dijaga kerahasiaannya"],
-    href: "/data-entry",
+    href: "/layanan/data-entry",
   },
 ];
 
@@ -157,12 +157,13 @@ const jsonLdLocalBusiness = {
     "@type": "OfferCatalog",
     name: "Layanan Jasa Dokumen",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "CV ATS Friendly", url: `${BASE_URL}/cv-ats` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Surat Lamaran Profesional", url: `${BASE_URL}/surat-lamaran` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Surat Legal", url: `${BASE_URL}/legal` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pendaftaran NPWP Online", url: `${BASE_URL}/npwp` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pendampingan Akademik", url: `${BASE_URL}/akademik` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Data Entry", url: `${BASE_URL}/data-entry` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Paket Siap Kerja (CV + Surat Lamaran)", url: `${BASE_URL}/layanan/paket-hemat` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "CV ATS Friendly", url: `${BASE_URL}/layanan/cv-ats` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Surat Lamaran Profesional", url: `${BASE_URL}/layanan/surat-lamaran` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Surat Legal", url: `${BASE_URL}/layanan/legal` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pendaftaran NPWP Online", url: `${BASE_URL}/layanan/npwp` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pendampingan Akademik", url: `${BASE_URL}/layanan/akademik` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Data Entry", url: `${BASE_URL}/layanan/data-entry` } },
     ],
   },
 };
@@ -370,7 +371,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <div className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-blue-700 group-hover:text-blue-800">
-                  Isi Formulir
+                  Lihat Detail Layanan
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>

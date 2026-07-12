@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE_URL } from "@/lib/metadata";
 
 export const runtime     = "edge";
 export const alt         = "Arifin Docs & Design — Jasa Dokumen Profesional";
@@ -10,6 +11,7 @@ export default async function OGImage() {
     new URL("../../public/logo-og.png", import.meta.url)
   ).then((res) => res.arrayBuffer());
   const logoSrc = `data:image/png;base64,${Buffer.from(logoData).toString("base64")}`;
+  const displayUrl = SITE_URL.replace(/^https?:\/\//, "");
 
   return new ImageResponse(
     (
@@ -63,7 +65,7 @@ export default async function OGImage() {
           position: "absolute", bottom: 32,
           color: "rgba(191,219,254,0.7)", fontSize: 18,
         }}>
-          arifindocs.id
+          {displayUrl}
         </div>
       </div>
     ),

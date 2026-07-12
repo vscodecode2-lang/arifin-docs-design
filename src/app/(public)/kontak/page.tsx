@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Kontak — Hubungi Kami | Arifin Docs & Design",
   description:
     "Hubungi Arifin Docs & Design via WhatsApp, Email, atau Instagram. Admin siap membantu Senin–Sabtu 08.00–21.00 WIB.",
+  alternates: { canonical: "/kontak" },
 };
 
 export default function KontakPage() {

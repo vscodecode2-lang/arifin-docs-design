@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const SLIDES = [
   {
@@ -55,6 +57,13 @@ export function TestimoniCvCarousel() {
                 <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
                   {slide.subtitle}
                 </p>
+                <Link
+                  href="/layanan/cv-ats"
+                  className="group mt-5 inline-flex items-center gap-2 rounded-full bg-blue-700 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-blue-800"
+                >
+                  Order Sekarang
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </div>
             </div>
           ))}

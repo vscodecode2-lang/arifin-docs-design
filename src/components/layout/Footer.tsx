@@ -20,12 +20,13 @@ const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: "Layanan Jasa",
     links: [
-      { label: "CV ATS Friendly", href: "/cv-ats" },
-      { label: "Surat Lamaran Profesional", href: "/surat-lamaran" },
-      { label: "Surat Legal", href: "/legal" },
-      { label: "Pendaftaran NPWP", href: "/npwp" },
-      { label: "Pendampingan Akademik", href: "/akademik" },
-      { label: "Data Entry", href: "/data-entry" },
+      { label: "Paket Siap Kerja (Hemat)", href: "/layanan/paket-hemat" },
+      { label: "CV ATS Friendly", href: "/layanan/cv-ats" },
+      { label: "Surat Lamaran Profesional", href: "/layanan/surat-lamaran" },
+      { label: "Surat Legal", href: "/layanan/legal" },
+      { label: "Pendaftaran NPWP", href: "/layanan/npwp" },
+      { label: "Pendampingan Akademik", href: "/layanan/akademik" },
+      { label: "Data Entry", href: "/layanan/data-entry" },
     ],
   },
   {

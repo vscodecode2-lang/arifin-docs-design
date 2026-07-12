@@ -66,10 +66,10 @@ export function PromoSection() {
 
               <div className="section-text-reveal section-text-reveal-delay-4 mt-7 flex flex-wrap gap-3">
                 <Link
-                  href="/paket-hemat"
+                  href="/layanan/paket-hemat"
                   className="group inline-flex items-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-blue-700/20 transition-all hover:-translate-y-0.5 hover:bg-blue-800"
                 >
-                  Pesan Paket Ini
+                  Lihat Detail Paket
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a
