@@ -14,6 +14,7 @@ import {
 
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/metadata";
+import { generateConsultationWhatsAppLink } from "@/lib/utils";
 import { ComingSoonAndTestimoni } from "@/components/home/ComingSoonAndTestimoni";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
@@ -55,8 +56,7 @@ interface ServiceCard {
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 
-const ADMIN_WA = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP ?? "6285801193410";
-const CONSULTATION_WA_URL = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent("Halo Arifin Docs & Design, saya ingin konsultasi terlebih dahulu mengenai layanan yang Anda tawarkan.")}`;
+const CONSULTATION_WA_URL = generateConsultationWhatsAppLink();
 
 const SERVICES: ServiceCard[] = [
   {
@@ -230,26 +230,26 @@ export default function HomePage() {
               <div className="section-text-reveal mb-6 inline-flex items-center gap-2 rounded-full border border-slate-300/80 bg-white/85 px-4 py-1.5 shadow-sm backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse" />
                 <span className="text-xs font-semibold uppercase tracking-widest text-slate-800">
-                  Layanan Dokumen Profesional #1
+                  Layanan Dokumen Profesional Indonesia
                 </span>
               </div>
 
               <h1 className="section-text-reveal section-text-reveal-delay-1 text-4xl font-black leading-[1.1] tracking-tight text-slate-950 drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-6xl">
-                Dokumen{" "}
+                Urusan Dokumen{" "}
                 <span className="inline-block bg-gradient-to-r from-sky-300 via-blue-500 to-rose-400 bg-clip-text text-transparent">
-                  Profesional
+                  Ribet?
                 </span>
-                ,<br />
-                Karir Lebih{" "}
+                <br />
+                Kami Bantu{" "}
                 <span className="inline-block bg-gradient-to-r from-sky-300 via-blue-500 to-rose-400 bg-clip-text text-transparent">
-                  Terbuka.
+                  Bereskan.
                 </span>
               </h1>
 
               <p className="section-text-reveal section-text-reveal-delay-2 mt-6 font-[family-name:var(--font-dm-sans)] text-base font-500 leading-relaxed text-slate-900 sm:text-lg">
-                Dari CV ATS Friendly hingga surat legal — kami bantu Anda tampil
-                profesional di setiap tahap karir dan administrasi. Cepat, aman,
-                dan dipercaya ratusan klien.
+                Dari CV ATS Friendly, surat lamaran, dokumen legal, NPWP, sampai
+                tugas kuliah — kami bantu semuanya selesai cepat dan rapi, siap
+                pakai tanpa ribet bolak-balik.
               </p>
 
               <div className="section-text-reveal section-text-reveal-delay-3 mt-4 flex items-center gap-2">

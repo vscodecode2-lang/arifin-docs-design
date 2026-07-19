@@ -19,7 +19,7 @@ export function useDashboardState(initialClients: ClientRow[], initialTrashed: C
   const router   = useRouter();
   const supabase = createClient();
 
-  const [activeTab, setActiveTab] = useState<"clients" | "trash" | "testimoni" | "pesan">("clients");
+  const [activeTab, setActiveTab] = useState<"clients" | "trash" | "testimoni" | "pesan" | "analytics">("clients");
   const [clients, setClients]             = useState<ClientRow[]>(initialClients);
   const [trashed, setTrashed]             = useState<ClientRow[]>(initialTrashed);
   const [search, setSearch]               = useState("");

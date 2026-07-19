@@ -1,9 +1,9 @@
 import Image from "next/image";
 import {
-  Users, Trash2, Star, Inbox, LogOut, RefreshCw, Loader2,
+  Users, Trash2, Star, Inbox, LogOut, RefreshCw, Loader2, BarChart3,
 } from "lucide-react";
 
-type TabKey = "clients" | "trash" | "testimoni" | "pesan";
+type TabKey = "clients" | "trash" | "testimoni" | "pesan" | "analytics";
 
 export function DashboardHeader({
   adminEmail, activeTab, onTabChange, onRefresh, onLogout, isLoggingOut,
@@ -114,6 +114,17 @@ export function DashboardHeader({
                 {unreadMessageCount}
               </span>
             )}
+          </button>
+          <button
+            onClick={() => onTabChange("analytics")}
+            className={`flex items-center gap-2 border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors ${
+              activeTab === "analytics"
+                ? "border-violet-500 text-violet-700"
+                : "border-transparent text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            <BarChart3 className="h-4 w-4" />
+            Analisis Pengunjung
           </button>
         </div>
       </div>

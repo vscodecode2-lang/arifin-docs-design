@@ -3,6 +3,7 @@
 import type { ClientStatus } from "@/app/actions/dashboardactions";
 import type { Testimoni } from "@/types/testimoni";
 import type { InvoiceData } from "@/app/actions/invoice-actions";
+import type { AnalyticsStats } from "./services/analytics.service";
 
 import { useDashboardState } from "./hooks/useDashboardState";
 import { DashboardHeader } from "./components/DashboardHeader";
@@ -11,6 +12,7 @@ import { ClientTab } from "./tabs/ClientTab";
 import { TrashTab } from "./tabs/TrashTab";
 import { TestimoniModerationTab } from "./tabs/TestimoniTab";
 import { PesanMasukTab, type ContactMessage } from "./tabs/ContactTab";
+import { AnalyticsTab } from "./tabs/AnalyticsTab";
 import { DetailModal } from "./modals/DetailModal";
 import { InvoiceModal } from "./modals/InvoiceModal";
 import { PermanentDeleteModal } from "./modals/PermanentDeleteModal";
@@ -37,6 +39,7 @@ interface Props {
   approvedTestimonials: Testimoni[];
   rejectedTestimonials: Testimoni[];
   contactMessages: ContactMessage[];
+  analyticsStats: AnalyticsStats;
 }
 
 // ─── Main Component ───────────────────────────────────────────────────────────
@@ -49,6 +52,7 @@ export function DashboardClient({
   approvedTestimonials,
   rejectedTestimonials,
   contactMessages,
+  analyticsStats,
 }: Props) {
   const {
     router,
@@ -161,6 +165,10 @@ export function DashboardClient({
 
         {activeTab === "pesan" && (
           <PesanMasukTab initialMessages={contactMessages} />
+        )}
+
+        {activeTab === "analytics" && (
+          <AnalyticsTab stats={analyticsStats} />
         )}
 
       </main>

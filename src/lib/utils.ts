@@ -25,3 +25,21 @@ export function generateWhatsAppLink(
   );
   return `https://wa.me/${adminPhone}?text=${message}`;
 }
+
+/**
+ * Membuat URL WhatsApp untuk pertanyaan PRA-order (belum isi formulir) —
+ * dipakai di tombol "Tanya Dulu" / "Konsultasi" pada halaman detail layanan,
+ * homepage, dan halaman tentang. Beda dari generateWhatsAppLink() yang
+ * pesannya mengasumsikan formulir sudah diisi.
+ * @param topic - Topik konsultasi (opsional, mis. nama layanan yang ditanyakan)
+ */
+export function generateConsultationWhatsAppLink(
+  topic?: string,
+  adminPhone: string = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP ?? "6285801193410"
+): string {
+  const topicLine = topic ? ` mengenai ${topic}` : " mengenai layanan yang Anda tawarkan";
+  const message = encodeURIComponent(
+    `Halo Arifin Docs & Design, saya ingin konsultasi terlebih dahulu${topicLine}.`
+  );
+  return `https://wa.me/${adminPhone}?text=${message}`;
+}

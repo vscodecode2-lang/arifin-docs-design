@@ -7,7 +7,7 @@ import {
 import { LAYANAN_LIST, getLayananBySlug } from "@/data/layanan";
 import { SITE_URL, buildPageMetadata, buildImageMetadata } from "@/lib/metadata";
 import { createAdminSupabaseClient } from "@/lib/supabase-admin";
-import { generateWhatsAppLink } from "@/lib/utils";
+import { generateConsultationWhatsAppLink } from "@/lib/utils";
 import { ServiceFaqAccordion } from "@/components/layanan/ServiceFaqAccordion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Testimoni } from "@/types/testimoni";
@@ -118,7 +118,7 @@ export default async function LayananDetailPage({
 
   const testimonials = await fetchServiceTestimonials(layanan.serviceTypeKey);
   const Icon = layanan.icon;
-  const waLink = generateWhatsAppLink(layanan.title);
+  const waLink = generateConsultationWhatsAppLink(layanan.title);
 
   const pageUrl = `${SITE_URL}/layanan/${layanan.slug}`;
 
@@ -194,7 +194,9 @@ export default async function LayananDetailPage({
           </div>
 
           <h1 className="section-text-reveal section-text-reveal-delay-1 text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-            {layanan.painHeadline}
+            <span className="inline-block animasi-warni">
+              Ribet? dan Bereskan.
+            </span>
           </h1>
 
           <p className="section-text-reveal section-text-reveal-delay-2 mx-auto mt-5 max-w-2xl text-base leading-relaxed text-blue-100/90 sm:text-lg">
