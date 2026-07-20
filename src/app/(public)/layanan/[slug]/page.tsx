@@ -195,7 +195,7 @@ export default async function LayananDetailPage({
 
           <h1 className="section-text-reveal section-text-reveal-delay-1 text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
             <span className="inline-block animasi-warni">
-              Ribet? dan Bereskan.
+              {`Ribet? Serahkan ${layanan.title} ke kami.`}
             </span>
           </h1>
 

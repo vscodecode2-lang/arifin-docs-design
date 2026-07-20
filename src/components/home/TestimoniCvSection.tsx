@@ -3,9 +3,9 @@ import { TestimoniCvCarousel } from "./TestimoniCvCarousel";
 
 export function TestimoniCvSection() {
   return (
-    <section id="testimoni-cv" className="bg-slate-50 py-20">
+    <section id="testimoni-cv" className="bg-slate-50 py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="section-text-reveal mb-10 text-center">
+        <div className="section-text-reveal mb-8 text-center">
           <span className="mb-3 inline-block rounded-full bg-blue-100 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-blue-700">
             Bukti Kualitas
           </span>
@@ -17,11 +17,11 @@ export function TestimoniCvSection() {
           </p>
         </div>
 
-        <div className="mb-10">
+        <div className="mb-8">
           <TestimoniCvCarousel />
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:justify-center">
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:justify-center">
           <Link
             href="/testimoni"
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-blue-700 px-8 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800"

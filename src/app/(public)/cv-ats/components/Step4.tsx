@@ -1,4 +1,5 @@
 import type { CvFormData } from "@/types/cv";
+import { ExperienceEntryList } from "@/components/forms/ExperienceEntryList";
 import { FieldWrapper } from "./FieldWrapper";
 import { inputClass, textareaClass, CAREER_STATUS_OPTIONS } from "../constants";
 
@@ -71,12 +72,14 @@ export function Step4({ data, onChange, errors }: {
           <p className="text-xs font-bold uppercase tracking-widest text-blue-600">
             Informasi Profesional
           </p>
-          <FieldWrapper label="Pengalaman Kerja" required={data.career_status === "profesional"}
-            helper="Nama perusahaan, posisi, periode, dan deskripsi singkat tanggung jawab">
-            <textarea rows={5} className={textareaClass}
-              placeholder="PT ABC Indonesia — UI/UX Designer (Jan 2022 - Sekarang)&#10;- Merancang desain UI untuk 3 produk utama perusahaan&#10;- Berkolaborasi dengan tim developer dan product manager"
-              value={data.work_experience} onChange={(e) => onChange("work_experience", e.target.value)} />
-          </FieldWrapper>
+          <ExperienceEntryList
+            label="Pengalaman Kerja"
+            required={data.career_status === "profesional"}
+            helper="Tambah satu per satu pengalaman kerja Anda dari perusahaan yang berbeda. Setiap blok bisa diisi secara terpisah."
+            error={errors.work_experience}
+            value={data.work_experience}
+            onChange={(value) => onChange("work_experience", value)}
+          />
           <FieldWrapper label="Achievement / Pencapaian" helper="Pencapaian yang bisa diukur (angka/data)">
             <textarea rows={3} className={textareaClass}
               placeholder="Contoh: Meningkatkan user retention 25%, memimpin tim 5 orang, menyelesaikan project senilai Rp500 juta"

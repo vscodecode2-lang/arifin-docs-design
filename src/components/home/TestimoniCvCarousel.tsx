@@ -1,25 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 const SLIDES = [
   {
-    label: "CV ATS Premium",
-    subtitle: "Desain profesional yang dirancang untuk membuat CV Anda terlihat jelas dan mudah dipindai recruiter.",
+    label: "CV ATS Profesional",
+    subtitle: "Contoh CV yang dirancang untuk ATS dan recruiter: rapi, terstruktur, dan langsung menunjukkan keunggulan Anda.",
+    imageSrc: "/CV-Uswatun Hasanah.avif",
+    alt: "Contoh CV ATS Profesional",
   },
   {
-    label: "Template CV Modern",
-    subtitle: "Format elegan dan struktural yang memudahkan HR melihat pengalaman dan kompetensi utama Anda.",
+    label: "CV Modern & Bersih",
+    subtitle: "Desain modern yang menonjolkan pengalaman, skill, dan ringkasan profil secara elegan.",
+    imageSrc: "/Cv_Ina_Mustaghfiroh.avif",
+    alt: "Contoh CV modern dan bersih",
   },
   {
-    label: "Preview CV Portofolio",
-    subtitle: "Contoh halaman portofolio yang menampilkan hasil kerja dan pencapaian secara ringkas namun bernilai.",
-  },
-  {
-    label: "Template CV Sederhana",
-    subtitle: "Versi efisien untuk apply cepat, rapi, dan sesuai standar platform lowongan kerja online.",
+    label: "CV Ringkas Berdaya",
+    subtitle: "Versi CV yang efektif untuk melamar banyak posisi tanpa kehilangan pesan utama.",
+    imageSrc: "/CV_Inda_Hasanah.avif",
+    alt: "Contoh CV ringkas berdaya",
   },
 ];
 
@@ -38,25 +41,30 @@ export function TestimoniCvCarousel() {
 
   return (
     <div className="relative">
-      <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm">
         <div
           className="flex min-w-full transition-transform duration-700 ease-out will-change-transform"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {SLIDES.map((slide) => (
-            <div key={slide.label} className="w-full flex-shrink-0 px-4 py-8 sm:px-6 lg:py-10">
-              <div className="mx-auto w-full max-w-full rounded-[1.75rem] border border-dashed border-slate-200 bg-slate-50 p-6 text-center shadow-inner shadow-slate-100 sm:p-8">
-                <div className="mb-5 inline-flex min-h-[190px] w-full items-center justify-center rounded-[1.5rem] bg-slate-100 px-4 text-slate-400 shadow-sm sm:min-h-[220px]">
-                  <div>
-                    <div className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">
-                      Placeholder Gambar
-                    </div>
-                    <div className="text-lg font-bold text-slate-900">{slide.label}</div>
+            <div key={slide.label} className="w-full flex-shrink-0 px-4 py-6 sm:px-5 lg:py-8">
+              <div className="mx-auto w-full max-w-full rounded-[1.5rem] border border-dashed border-slate-200 bg-slate-50 p-4 text-left shadow-inner shadow-slate-100 sm:p-5">
+                <div className="mb-4 overflow-hidden rounded-[1.25rem] bg-slate-100 shadow-sm">
+                  <div className="relative aspect-[3/4] w-full bg-slate-100 sm:aspect-[9/12]">
+                    <Image
+                      src={slide.imageSrc}
+                      alt={slide.alt}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
-                <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
-                  {slide.subtitle}
-                </p>
+                <div className="mb-3 text-left">
+                  <div className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                    {slide.label}
+                  </div>
+                  <p className="text-lg font-bold text-slate-900 sm:text-xl">{slide.subtitle}</p>
+                </div>
                 <Link
                   href="/layanan/cv-ats"
                   className="group mt-5 inline-flex items-center gap-2 rounded-full bg-blue-700 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-blue-800"

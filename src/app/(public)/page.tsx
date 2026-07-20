@@ -236,12 +236,12 @@ export default function HomePage() {
 
               <h1 className="section-text-reveal section-text-reveal-delay-1 text-4xl font-black leading-[1.1] tracking-tight text-slate-950 drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-6xl">
                 Urusan Dokumen{" "}
-                <span className="inline-block bg-gradient-to-r from-sky-300 via-blue-500 to-rose-400 bg-clip-text text-transparent">
+                <span className="inline-block animasi-warni">
                   Ribet?
                 </span>
                 <br />
                 Kami Bantu{" "}
-                <span className="inline-block bg-gradient-to-r from-sky-300 via-blue-500 to-rose-400 bg-clip-text text-transparent">
+                <span className="inline-block animasi-warni">
                   Bereskan.
                 </span>
               </h1>

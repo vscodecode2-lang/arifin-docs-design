@@ -1,4 +1,5 @@
 import type { LamaranFormData, LamaranCareerStatus } from "@/types/lamaran";
+import { ExperienceEntryList } from "@/components/forms/ExperienceEntryList";
 import { Field } from "./Field";
 import { inputCls, textareaCls } from "../constants";
 
@@ -46,11 +47,14 @@ export function Step3({ data, errors, careerStatus, onChange }: {
       {careerStatus === "profesional" && (
         <div className="space-y-5 rounded-xl border border-blue-100 bg-blue-50/40 p-5">
           <p className="text-xs font-bold uppercase tracking-widest text-blue-600">💼 Profesional</p>
-          <Field label="Pengalaman Kerja" required helper="Perusahaan, posisi, periode & tanggung jawab utama" error={errors.work_experience}>
-            <textarea rows={5} className={textareaCls}
-              placeholder="PT ABC Indonesia — UI/UX Designer (Jan 2022 – Sekarang)&#10;- Merancang UI untuk 3 produk utama&#10;- Kolaborasi dengan tim dev & PM&#10;&#10;PT XYZ — Junior Designer (2020 – 2021)"
-              value={data.work_experience} onChange={e => onChange("work_experience", e.target.value)} />
-          </Field>
+          <ExperienceEntryList
+            label="Pengalaman Kerja"
+            required
+            helper="Tambah pengalaman kerja secara terpisah agar lebih mudah dan lebih friendly saat mengisi."
+            error={errors.work_experience}
+            value={data.work_experience}
+            onChange={(value) => onChange("work_experience", value)}
+          />
           <Field label="Achievement / Pencapaian" helper="Gunakan angka/data jika memungkinkan" error={errors.achievement}>
             <textarea rows={3} className={textareaCls}
               placeholder="Meningkatkan user retention 25%, menyelesaikan redesign dalam 2 minggu, memimpin tim 5 orang"
