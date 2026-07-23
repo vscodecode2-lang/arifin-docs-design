@@ -9,19 +9,19 @@ import { FaqAccordion } from "./Faqaccordion";
 import { SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Cara Kerja — Mudah, Cepat, dan Terpercaya",
+  title: "Cara Kerja Layanan",
   description:
     "Pelajari bagaimana cara memesan layanan dokumen profesional di Arifin Docs & Design. Proses mudah, cepat, dan aman dalam 4 langkah sederhana.",
   alternates: { canonical: "/cara-kerja" },
   openGraph: {
-    title: "Cara Kerja Layanan | Arifin Docs & Design",
+    title: "Cara Kerja Layanan",
     description: "Pelajari alur pemesanan layanan dokumen profesional dalam 4 langkah sederhana.",
     type: "website",
     locale: "id_ID",
     url: `${SITE_URL}/cara-kerja`,
   },
   twitter: {
-    title: "Cara Kerja Layanan | Arifin Docs & Design",
+    title: "Cara Kerja Layanan",
     description: "Pelajari alur pemesanan layanan dokumen profesional dalam 4 langkah sederhana.",
     card: "summary_large_image",
   },

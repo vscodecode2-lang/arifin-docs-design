@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Syarat & Ketentuan | Arifin Docs & Design",
+  title: "Syarat & Ketentuan",
   description: "Ketentuan layanan, revisi, dan prosedur pemesanan di Arifin Docs & Design.",
   alternates: { canonical: "/syarat-ketentuan" },
 };

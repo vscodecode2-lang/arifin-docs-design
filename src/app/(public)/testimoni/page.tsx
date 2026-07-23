@@ -4,7 +4,7 @@ import { TestimoniClient } from "./TestimoniClient";
 import type { Testimoni } from "@/types/testimoni";
 
 export const metadata: Metadata = {
-  title: "Testimoni Klien | Arifin Docs & Design",
+  title: "Testimoni Klien",
   description:
     "Baca testimoni nyata dari klien yang telah menggunakan layanan CV ATS, Surat Lamaran, NPWP, dan layanan dokumen profesional lainnya.",
   alternates: { canonical: "/testimoni" },

@@ -311,7 +311,7 @@ export default async function LayananDetailPage({
       {/* ══════════ PRICING + CTA ══════════ */}
       <section className="bg-slate-50 py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="section-text-reveal overflow-hidden rounded-[28px] border border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-slate-900 p-8 text-center text-white shadow-xl sm:p-10">
+          <div className="section-text-reveal overflow-hidden rounded-[28px] border border-blue-200 bg-linear-to-br from-blue-700 via-blue-800 to-slate-900 p-8 text-center text-white shadow-xl sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-200">Investasi</p>
             <p className="mt-2 text-4xl font-black">{layanan.priceLabel}</p>
             <p className="mt-1 text-sm text-blue-200">{layanan.priceNote}</p>

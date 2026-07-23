@@ -691,8 +691,14 @@ export function TestimoniClient({ testimonials }: PublicProps) {
             Apa Kata Mereka?
           </h1>
           <p className="mt-3 text-blue-200 text-sm sm:text-base">
-            Testimoni nyata dari klien yang telah menggunakan layanan kami
+            Ulasan dari klien yang sudah memakai layanan CV, surat lamaran, NPWP, hingga dokumen akademik dan legal kami.
           </p>
+          <div className="mt-6 rounded-2xl border border-blue-700/40 bg-blue-900/50 px-6 py-5 text-left text-sm text-blue-100 shadow-sm">
+            <p className="font-semibold text-white">Mengapa testimoni ini penting?</p>
+            <p className="mt-2 leading-7">
+              Kami menggunakan testimoni sebagai bukti bahwa setiap layanan dibuat untuk membantu klien mencapai hasil yang lebih siap dipakai, lebih profesional, dan lebih cepat diselesaikan.
+            </p>
+          </div>
 
           {stats && (
             <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-6 rounded-2xl border border-blue-700/50 bg-blue-900/60 px-8 py-5 backdrop-blur-sm">

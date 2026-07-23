@@ -26,7 +26,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 export const revalidate = 1800; // detik (30 menit)
 
 export const metadata: Metadata = {
-  title: "Arifin Docs & Design — Jasa Dokumen Profesional #1",
+  title: "Jasa Dokumen Profesional",
   description:
     "Layanan CV ATS Friendly, Surat Lamaran, Surat Legal, NPWP Online, Pendampingan Akademik, dan Data Entry profesional. Cepat, aman, dipercaya 500+ klien se-Indonesia.",
   keywords: [

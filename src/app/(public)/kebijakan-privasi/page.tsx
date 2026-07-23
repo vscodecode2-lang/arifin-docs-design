@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kebijakan Privasi | Arifin Docs & Design",
+  title: "Kebijakan Privasi",
   description: "Informasi tentang bagaimana kami mengelola data pribadi Anda dengan aman dan transparan.",
   alternates: { canonical: "/kebijakan-privasi" },
 };

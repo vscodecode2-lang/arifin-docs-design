@@ -4,7 +4,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { generateConsultationWhatsAppLink } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami | Arifin Docs & Design",
+  title: "Tentang Kami",
   description: "Kenali Arifin Docs & Design, tim yang membantu klien menyusun dokumen profesional untuk karier dan bisnis.",
   alternates: { canonical: "/tentang" },
 };
@@ -20,22 +20,22 @@ export default function TentangPage() {
 
         <div className="mt-5 space-y-4 text-base leading-8 text-slate-600">
           <p>
-            Arifin Docs &amp; Design lahir dari masalah yang nyata: banyak pencari
-            kerja dan pelaku usaha kesulitan menyiapkan dokumen yang rapi, sesuai
-            standar, dan tepat waktu — sementara waktu dan tenaga mereka lebih
-            dibutuhkan di tempat lain. Kami hadir untuk mengambil alih beban itu.
+            Arifin Docs &amp; Design lahir dari kebutuhan nyata: banyak pencari kerja,
+            mahasiswa, dan pelaku usaha merasa dokumen mereka belum cukup kuat untuk
+            dipakai di dunia nyata. Kami membantu mengubah dokumen sederhana menjadi
+            versi yang lebih rapi, meyakinkan, dan siap dipakai untuk tujuan tertentu.
           </p>
           <p>
-            Berbekal latar belakang teknis, kami memahami bagaimana sistem seperti
-            ATS (Applicant Tracking System) sebenarnya membaca dan menyaring CV —
-            bukan sekadar menyusun dokumen yang terlihat rapi secara visual.
-            Pendekatan ini kami terapkan di setiap layanan, dari CV dan surat
-            lamaran hingga dokumen legal dan administrasi.
+            Kami tidak hanya mengandalkan desain visual. Pendekatan kami berfokus pada
+            struktur, bahasa, dan format yang sesuai kebutuhan — termasuk standar ATS
+            untuk CV, cara penyusunan surat lamaran yang lebih personal, serta dokumen
+            legal dan administrasi yang jelas dan mudah dipahami.
           </p>
           <p>
-            Hingga saat ini, lebih dari 500 klien di seluruh Indonesia telah
-            mempercayakan kebutuhan dokumennya kepada kami — mulai dari fresh
-            graduate, profesional, mahasiswa, hingga pelaku UMKM.
+            Nilai yang kami pegang adalah kejelasan, kecepatan, dan transparansi. Setiap
+            layanan kami dirancang agar klien bisa memahami prosesnya sejak awal, tahu
+            apa yang dibutuhkan, dan menerima hasil yang siap dipakai tanpa harus
+            mengulang dari nol.
           </p>
         </div>
 
