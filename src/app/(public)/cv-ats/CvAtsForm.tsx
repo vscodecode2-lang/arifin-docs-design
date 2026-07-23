@@ -12,9 +12,16 @@ import { Step4 } from "./components/Step4";
 import { Step5Review } from "./components/Step5Review";
 import { SuccessScreen } from "./components/SuccessScreen";
 
+interface CvFormVariant {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  privacyNote?: string;
+}
+
 // ─── Main Page Component ──────────────────────────────────────────────────────
 
-export function CvAtsForm() {
+export function CvAtsForm({ variant }: { variant?: CvFormVariant }) {
   const {
     currentStep, form, errors, isLoading, submitError, invalidSteps, orderCode, progress,
     updateStep1, updateStep2, updateStep3, updateStep4,
@@ -33,11 +40,11 @@ export function CvAtsForm() {
         {/* ── Header ── */}
         <div className="mb-8 text-center">
           <span className="mb-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-700">
-            Layanan CV ATS Friendly
+            {variant?.eyebrow ?? "Layanan CV ATS Friendly"}
           </span>
-          <h1 className="text-2xl font-black text-slate-900">Formulir Pembuatan CV</h1>
+          <h1 className="text-2xl font-black text-slate-900">{variant?.title ?? "Formulir Pembuatan CV"}</h1>
           <p className="mt-1 text-sm text-slate-500">
-            Isi data dengan lengkap untuk hasil CV terbaik
+            {variant?.subtitle ?? "Isi data dengan lengkap untuk hasil CV terbaik"}
           </p>
         </div>
 
@@ -146,7 +153,7 @@ export function CvAtsForm() {
 
         {/* Privacy note */}
         <p className="mt-4 text-center text-xs text-slate-400">
-          🔒 Data Anda disimpan dengan aman dan hanya digunakan untuk keperluan pembuatan CV.
+          {variant?.privacyNote ?? "🔒 Data Anda disimpan dengan aman dan hanya digunakan untuk keperluan pembuatan CV."}
         </p>
       </div>
     </div>

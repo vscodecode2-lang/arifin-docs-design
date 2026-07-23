@@ -280,7 +280,10 @@ export function KontakClient() {
     <div className="overflow-x-hidden">
 
       {/* ══ HERO ══ */}
-      <section className="relative bg-blue-950 py-20">
+      <section
+        className="relative bg-blue-950 bg-cover bg-center bg-no-repeat py-20"
+        style={{ backgroundImage: "url('/bg-kontak.avif')" }}
+      >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-blue-800/20 blur-3xl" />
           <div className="absolute bottom-0 left-1/4 h-64 w-64 rounded-full bg-blue-700/15 blur-3xl" />

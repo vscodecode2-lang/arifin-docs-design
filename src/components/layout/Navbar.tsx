@@ -26,6 +26,7 @@ const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "Paket-Hemat", href: "/layanan/paket-hemat" },
       { label: "CV ATS Friendly", href: "/layanan/cv-ats" },
+      { label: "Upgrade CV Lama", href: "/layanan/upgrade-cv" },
       { label: "Surat Lamaran Profesional", href: "/layanan/surat-lamaran" },
       { label: "Surat Legal", href: "/layanan/legal" },
       { label: "Pendaftaran NPWP", href: "/layanan/npwp" },
@@ -49,11 +50,6 @@ const NAV_ITEMS: NavItem[] = [
     label: "Kontak",
     href: "/kontak",
     icon: <Phone size={16} />,
-  },
-  {
-    label: "Cek status pesanan",
-    href: "/cek-order",
-    icon: <Search size={16} />,
   },
 ];
 

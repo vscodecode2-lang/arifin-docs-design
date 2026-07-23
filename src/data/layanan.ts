@@ -147,6 +147,57 @@ export const LAYANAN_LIST: LayananData[] = [
     ],
   },
   {
+    slug: "upgrade-cv",
+    serviceTypeKey: "CV",
+    icon: Sparkles,
+    badge: "Upgrade Populer",
+    category: "CV & Karir",
+    title: "Upgrade CV Lama",
+    painHeadline: "CV lama kamu masih ada, tapi peluang kerja belum naik?",
+    painBody:
+      "Banyak CV lama berisi pengalaman yang relevan, tapi formatnya sudah ketinggalan zaman, kurang rapi, dan tidak lagi sesuai standar ATS. Hasilnya lamaran tetap masuk ke kotak HRD, tapi tidak sampai ke tahap interview karena CV kamu tidak sekuat yang seharusnya.",
+    solutionBody:
+      "Kami audit CV lama Anda, perbaiki struktur, highlight pencapaian yang benar, dan ubah menjadi versi yang lebih meyakinkan untuk recruiter sekaligus lebih mudah lolos scan ATS. Tujuannya bukan sekadar tampilan, melainkan peluang Anda naik ke tahap interview.",
+    priceLabel: "Mulai Rp25.000",
+    priceNote: "Revisi ringan sampai optimasi maksimal",
+    formHref: "/upgrade-cv",
+    benefits: [
+      { icon: Target, title: "Audit pengalaman & keyword", desc: "Kami identifikasi bagian yang kurang kuat dan menonjolkan pencapaian yang paling relevan." },
+      { icon: Sparkles, title: "Tampilan lebih profesional", desc: "CV lama Anda dibenahi jadi lebih rapi, modern, dan nyaman dibaca recruiter." },
+      { icon: RefreshCw, title: "Revisi tetap included", desc: "Tidak perlu takut hasilnya belum sesuai — revisi masih termasuk demi hasil terbaik." },
+      { icon: Users, title: "Konsultasi langsung", desc: "Anda bisa minta saran strategi lamaran agar CV benar-benar relevant dengan target posisi." },
+    ],
+    faqs: [
+      {
+        question: "Apakah cocok untuk CV yang sudah lama dibuat?",
+        answer:
+          "Sangat cocok. Layanan ini dibuat khusus untuk mengoptimalkan CV lama yang mungkin sudah tidak sesuai dengan standar ATS atau kebutuhan pasar kerja sekarang.",
+      },
+      {
+        question: "Apakah saya perlu upload file CV lama?",
+        answer:
+          "Siapkan file CV lama atau data pengalaman kerja yang ingin diperbarui. Formulir akan memandu Anda untuk menyiapkan detail yang diperlukan.",
+      },
+      {
+        question: "Berapa lama proses upgrade CV lama?",
+        answer:
+          "Rata-rata 1 hari kerja setelah data Anda lengkap. Jika butuh percepatan, Anda bisa konsultasikan ke admin secara langsung.",
+      },
+      {
+        question: "Apakah hasilnya bisa dipakai untuk melamar posisi baru?",
+        answer:
+          "Bisa. Setelah diperbarui, CV Anda akan lebih siap untuk digunakan ke berbagai posisi yang relevan, terutama jika dilengkapi keyword yang tepat.",
+      },
+    ],
+    metaTitle: "Upgrade CV Lama — Optimalkan Peluang Kerja Anda",
+    metaDescription:
+      "CV lama terasa out-of-date? Upgrade CV lama Anda menjadi format yang lebih rapi, lebih ATS-friendly, dan lebih siap menembus screening. Mulai Rp25.000.",
+    keywords: [
+      "upgrade CV lama", "optimasi CV lama", "jasa perbaiki CV", "CV ATS terbaru",
+      "update CV untuk kerja", "perbaiki CV online",
+    ],
+  },
+  {
     slug: "surat-lamaran",
     serviceTypeKey: "Lamaran",
     icon: Mail,

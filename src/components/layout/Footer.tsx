@@ -22,6 +22,7 @@ const FOOTER_SECTIONS: FooterSection[] = [
     links: [
       { label: "Paket Siap Kerja (Hemat)", href: "/layanan/paket-hemat" },
       { label: "CV ATS Friendly", href: "/layanan/cv-ats" },
+      { label: "Upgrade CV Lama", href: "/layanan/upgrade-cv" },
       { label: "Surat Lamaran Profesional", href: "/layanan/surat-lamaran" },
       { label: "Surat Legal", href: "/layanan/legal" },
       { label: "Pendaftaran NPWP", href: "/layanan/npwp" },

@@ -71,6 +71,17 @@ const SERVICES: ServiceCard[] = [
     badge: "Terlaris",
   },
   {
+    icon: <FileText className="h-6 w-6" />,
+    title: "Upgrade CV Lama",
+    description:
+      "CV lama Anda mungkin masih punya pengalaman kuat, tapi formatnya sudah ketinggalan dan tidak lagi optimal untuk screening ATS. Kami audit, perbaiki struktur, dan optimalkan isi CV agar lebih meyakinkan untuk recruiter. Mulai Rp25.000.",
+    features: ["Audit CV lama dan optimasi isi yang relevan",
+      "Tampilan lebih rapi, modern, dan lebih siap melamar",
+      "Revisi hingga sesuai target posisi yang Anda tuju"],
+    href: "/layanan/upgrade-cv",
+    badge: "Hot Offer",
+  },
+  {
     icon: <Mail className="h-6 w-6" />,
     title: "Surat Lamaran Profesional",
     description:
@@ -246,7 +257,7 @@ export default function HomePage() {
                 </span>
               </h1>
 
-              <p className="section-text-reveal section-text-reveal-delay-2 mt-6 font-[family-name:var(--font-dm-sans)] text-base font-500 leading-relaxed text-slate-900 sm:text-lg">
+              <p className="section-text-reveal section-text-reveal-delay-2 mt-6 font-(family-name:--font-dm-sans) text-base font-500 leading-relaxed text-slate-900 sm:text-lg">
                 Dari CV ATS Friendly, surat lamaran, dokumen legal, NPWP, sampai
                 tugas kuliah — kami bantu semuanya selesai cepat dan rapi, siap
                 pakai tanpa ribet bolak-balik.
@@ -274,7 +285,7 @@ export default function HomePage() {
                   href="#layanan"
                   className="group relative overflow-hidden inline-flex items-center gap-2 rounded-xl border border-blue-400/60 bg-transparent px-6 py-3 text-sm font-bold text-blue-700 shadow-lg shadow-blue-600/20 transition-all duration-300 active:scale-95 hover:-translate-y-1 hover:bg-blue-600 hover:text-white hover:shadow-xl hover:shadow-blue-500/40"
                 >
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                  <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                   <span className="relative z-10">Lihat Layanan Jasa</span>
                   <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
@@ -282,7 +293,7 @@ export default function HomePage() {
                   href="/testimoni"
                   className="group relative overflow-hidden inline-flex items-center gap-2 rounded-xl border border-emerald-400/60 bg-transparent px-6 py-3 text-sm font-semibold text-emerald-700 backdrop-blur-sm transition-all duration-300 active:scale-95 hover:-translate-y-1 hover:bg-emerald-600 hover:text-white hover:shadow-lg hover:shadow-emerald-400/30"
                 >
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                  <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                   <span className="relative z-10">Lihat Testimoni</span>
                   <ArrowRight className="relative z-10 h-4 w-4 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
                 </Link>

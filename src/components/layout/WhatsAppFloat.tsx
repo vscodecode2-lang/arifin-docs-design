@@ -24,6 +24,7 @@ const ADMIN_WA = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP ?? "6285801193410";
 // Pesan berbeda per jalur URL — lebih personal, konversi lebih tinggi
 const CONTEXT_MESSAGES: Record<string, string> = {
   "/cv-ats":        "Halo, saya tertarik dengan layanan CV ATS Friendly. Boleh info lebih lanjut?",
+  "/upgrade-cv":    "Halo, saya ingin upgrade CV lama saya. Bisa bantu lihat paketnya?",
   "/surat-lamaran": "Halo, saya ingin tanya tentang layanan Surat Lamaran Profesional.",
   "/legal":         "Halo, saya butuh bantuan pembuatan Surat Legal. Bisa dibantu?",
   "/npwp":          "Halo, saya ingin daftar NPWP online melalui Arifin Docs. Bagaimana prosesnya?",
@@ -48,6 +49,7 @@ function getWAUrl(pathname: string): string {
 // Label tooltip per halaman
 const CONTEXT_LABELS: Record<string, string> = {
   "/cv-ats":        "Tanya soal CV ATS",
+  "/upgrade-cv":    "Tanya soal Upgrade CV",
   "/surat-lamaran": "Tanya soal Surat Lamaran",
   "/legal":         "Tanya soal Surat Legal",
   "/npwp":          "Tanya soal Daftar NPWP",

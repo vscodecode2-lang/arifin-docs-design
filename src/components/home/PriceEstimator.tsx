@@ -60,7 +60,7 @@ const SERVICES: ServicePricing[] = [
       { label: "Fresh Graduate", price: "Rp 35.000", priceNum: 35000, duration: "1–2 hari kerja", note: "Cocok untuk lulusan baru" },
       { label: "Profesional (1–5 thn)", price: "Rp 50.000", priceNum: 50000, duration: "1–2 hari kerja", note: "Pengalaman kerja ada" },
       { label: "Senior / Manajer", price: "Rp 75.000", priceNum: 75000, duration: "2–3 hari kerja", note: "Multi-halaman, detail penuh" },
-      { label: "Revisi CV Lama", price: "Rp 25.000", priceNum: 25000, duration: "1 hari kerja", note: "Upload CV, kami optimalkan" },
+      { label: "Upgrade CV Lama", price: "Rp 25.000", priceNum: 25000, duration: "1 hari kerja", note: "Optimasi CV lama jadi lebih siap lamar" },
     ],
   },
   {
