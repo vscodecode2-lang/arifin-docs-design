@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { CvAtsForm } from "../cv-ats/CvAtsForm";
 import { SITE_URL } from "@/lib/metadata";
+import { UpgradeCvForm } from "./UpgradeCvForm";
 
 export const metadata: Metadata = {
   title: "Upgrade CV Lama — Optimalkan CV Lama Jadi Siap Lolos ATS",
@@ -29,13 +29,24 @@ export const metadata: Metadata = {
 
 export default function UpgradeCvPage() {
   return (
-    <CvAtsForm
-      variant={{
-        eyebrow: "Layanan Upgrade CV",
-        title: "Upgrade CV Lama Jadi Lebih Siap Kerja",
-        subtitle: "Isi formulir di bawah untuk audit CV lama, optimasi struktur, dan tingkatkan peluang lolos ATS.",
-        privacyNote: "🔒 Data yang Anda kirim aman dan hanya dipakai untuk proses upgrade CV.",
-      }}
-    />
+    <div className="min-h-screen bg-slate-50 py-10">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6">
+        <div className="mb-8 text-center">
+          <span className="mb-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-700">
+            Layanan Upgrade CV
+          </span>
+          <h1 className="text-2xl font-black text-slate-900">Upgrade CV Lama Jadi Lebih Siap Kerja</h1>
+          <p className="mt-1 text-sm text-slate-500">
+            Isi formulir di bawah untuk mengirimkan CV lama dan foto profesional Anda.
+          </p>
+        </div>
+
+        <UpgradeCvForm />
+
+        <p className="mt-4 text-center text-xs text-slate-400">
+          🔒 Data yang Anda kirim aman dan hanya dipakai untuk proses upgrade CV.
+        </p>
+      </div>
+    </div>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PromoSection } from "./paket-hemat/PromoSection";
 import { PriceEstimator } from "@/components/home/PriceEstimator";
 import { TestimoniCvSection } from "@/components/home/TestimoniCvSection";
+import { OrderTracker } from "@/components/home/OrderTracker";
 import {
   FileText,
   Mail,
@@ -396,6 +397,23 @@ export default function HomePage() {
       </section>
 
       <PromoSection />
+
+      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-blue-600">
+              Cek Pesanan
+            </p>
+            <h2 className="text-2xl font-black text-slate-900 sm:text-3xl">
+              Lacak Status Ordermu Dengan Mudah
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-500 sm:text-base">
+              Masukkan kode order yang kamu terima setelah melakukan pemesanan untuk melihat status pengerjaan secara real-time.
+            </p>
+          </div>
+          <OrderTracker />
+        </div>
+      </section>
 
       {/* Wave divider */}
       <div className="bg-white">
