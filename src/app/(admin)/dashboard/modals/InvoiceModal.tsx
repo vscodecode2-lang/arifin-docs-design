@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import {
   generateInvoice, markInvoiceSent,
-  type InvoiceData,
+  type DiscountType, type InvoiceData, type InvoiceDiscount,
 } from "@/app/actions/invoice-actions";
 import { BUSINESS_INFO, DEFAULT_PRICES, SERVICE_LABELS } from "@/lib/invoice-config";
 import { SITE_URL } from "@/lib/metadata";
@@ -37,13 +37,35 @@ function formatPhone(phone: string): string {
   return phone;
 }
 
+function calculateInvoiceTotals(basePrice: number, discount: InvoiceDiscount) {
+  const subtotal = Math.max(0, Math.round(basePrice));
+  let discountAmount = 0;
+
+  if (discount.type === "percent" && discount.value > 0) {
+    discountAmount = Math.round(subtotal * (discount.value / 100));
+  } else if (discount.type === "fixed" && discount.value > 0) {
+    discountAmount = Math.min(subtotal, Math.round(discount.value));
+  }
+
+  return { subtotal, discountAmount, totalAmount: Math.max(0, subtotal - discountAmount) };
+}
+
+function formatDiscountLabel(discount: InvoiceDiscount): string {
+  if (discount.type === "percent" && discount.value > 0) return `Diskon ${discount.value}%`;
+  if (discount.type === "fixed" && discount.value > 0) return `Diskon ${formatRupiah(discount.value)}`;
+  return "Tidak ada diskon";
+}
+
 // ─── Invoice Preview Component ────────────────────────────────
 
 function InvoicePreview({ invoice }: { invoice: InvoiceData }) {
+  const totalAmount = invoice.total_amount ?? invoice.price;
+  const subtotal = invoice.subtotal ?? invoice.price;
+  const discountAmount = invoice.discount_amount ?? 0;
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm">
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 text-sm sm:p-6">
       {/* Header */}
-      <div className="flex items-start justify-between border-b border-slate-100 pb-4">
+      <div className="flex flex-col gap-3 border-b border-slate-100 pb-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="relative mb-2 h-10 w-10 overflow-hidden rounded-xl">
             <Image src="/logo.avif" alt={BUSINESS_INFO.name} fill sizes="40px" className="object-cover" />
@@ -52,7 +74,7 @@ function InvoicePreview({ invoice }: { invoice: InvoiceData }) {
           <p className="text-xs text-slate-500">{BUSINESS_INFO.email}</p>
           <p className="text-xs text-slate-500">{formatPhone(BUSINESS_INFO.phone)}</p>
         </div>
-        <div className="text-right">
+        <div className="text-left sm:text-right">
           <p className="text-lg font-black text-blue-700">{invoice.invoice_number}</p>
           <p className="text-xs text-slate-500">Tanggal: {formatDate(invoice.created_at)}</p>
           <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
@@ -75,8 +97,8 @@ function InvoicePreview({ invoice }: { invoice: InvoiceData }) {
       </div>
 
       {/* Service table */}
-      <div className="overflow-hidden rounded-xl border border-slate-200">
-        <table className="w-full text-xs">
+      <div className="overflow-x-auto rounded-xl border border-slate-200">
+        <table className="w-full min-w-[280px] text-xs">
           <thead>
             <tr className="bg-slate-50">
               <th className="px-3 py-2 text-left font-bold text-slate-600">Layanan</th>
@@ -87,15 +109,23 @@ function InvoicePreview({ invoice }: { invoice: InvoiceData }) {
             <tr className="border-t border-slate-100">
               <td className="px-3 py-3 text-slate-800">{invoice.service_label}</td>
               <td className="px-3 py-3 text-right font-bold text-slate-900">
-                {formatRupiah(invoice.price)}
+                {formatRupiah(subtotal)}
               </td>
             </tr>
           </tbody>
           <tfoot>
+            {discountAmount > 0 && (
+              <tr className="border-t border-slate-200 bg-slate-50">
+                <td className="px-3 py-2 font-semibold text-slate-700">Diskon</td>
+                <td className="px-3 py-2 text-right font-semibold text-slate-700">
+                  -{formatRupiah(discountAmount)}
+                </td>
+              </tr>
+            )}
             <tr className="border-t-2 border-slate-200 bg-blue-50">
               <td className="px-3 py-2.5 font-black text-slate-900">Total</td>
               <td className="px-3 py-2.5 text-right font-black text-blue-700">
-                {formatRupiah(invoice.price)}
+                {formatRupiah(totalAmount)}
               </td>
             </tr>
           </tfoot>
@@ -145,9 +175,11 @@ export function InvoiceModal({
 }: Props) {
   const defaultPrice = DEFAULT_PRICES[serviceType] ?? 0;
 
-  const [price, setPrice]   = useState<number>(defaultPrice);
-  const [notes, setNotes]   = useState("");
-  const [step, setStep]     = useState<"form" | "preview" | "send">("form");
+  const [price, setPrice] = useState<number>(defaultPrice);
+  const [discountType, setDiscountType] = useState<DiscountType>("none");
+  const [discountValue, setDiscountValue] = useState(0);
+  const [notes, setNotes] = useState("");
+  const [step, setStep] = useState<"form" | "preview" | "send">("form");
   const [invoice, setInvoice] = useState<InvoiceData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError]   = useState("");
@@ -157,6 +189,8 @@ export function InvoiceModal({
     : SITE_URL;
 
   const invoiceUrl = invoice ? `${BASE_URL}/invoice/${invoice.id}` : "";
+  const totals = useMemo(() => calculateInvoiceTotals(price, { type: discountType, value: discountValue }), [price, discountType, discountValue]);
+  const discountLabel = useMemo(() => formatDiscountLabel({ type: discountType, value: discountValue }), [discountType, discountValue]);
 
   // ── Handlers ──
 
@@ -166,7 +200,8 @@ export function InvoiceModal({
 
     const res = await generateInvoice(
       clientId, clientName, clientEmail, clientPhone,
-      serviceType, price, notes || undefined
+      serviceType, price, notes || undefined,
+      { type: discountType, value: discountValue }
     );
 
     setIsLoading(false);
@@ -184,7 +219,7 @@ export function InvoiceModal({
       `📄 ${invoice.invoice_number}\n` +
       `🧾 ${invoice.order_code ?? "-"}\n` +
       `💼 ${invoice.service_label}\n` +
-      `💰 ${formatRupiah(invoice.price)}\n\n` +
+      `💰 ${formatRupiah(invoice.total_amount ?? invoice.price)}\n\n` +
       `Lihat invoice lengkap: ${invoiceUrl}\n\n` +
       `Pembayaran ke ${BUSINESS_INFO.bank} ${BUSINESS_INFO.account_no} a.n. ${BUSINESS_INFO.account_name}`
     );
@@ -203,7 +238,7 @@ export function InvoiceModal({
       `Invoice: ${invoice.invoice_number}\n` +
       `Kode Order: ${invoice.order_code ?? "-"}\n` +
       `Layanan: ${invoice.service_label}\n` +
-      `Total: ${formatRupiah(invoice.price)}\n\n` +
+      `Total: ${formatRupiah(invoice.total_amount ?? invoice.price)}\n\n` +
       `Lihat invoice lengkap: ${invoiceUrl}\n\n` +
       `Pembayaran:\nBank: ${BUSINESS_INFO.bank}\nNo. Rek: ${BUSINESS_INFO.account_no}\nA.n.: ${BUSINESS_INFO.account_name}\n\n` +
       `Terima kasih,\nArifin Docs & Design`
@@ -221,7 +256,7 @@ export function InvoiceModal({
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm sm:items-center"
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="flex max-h-[92vh] w-full max-w-lg flex-col rounded-t-2xl bg-white shadow-2xl sm:mx-4 sm:rounded-2xl">
+      <div className="flex max-h-[92vh] w-full max-w-2xl flex-col rounded-t-2xl bg-white shadow-2xl sm:mx-4 sm:rounded-2xl">
 
         {/* Header */}
         <div className="flex shrink-0 items-center justify-between border-b border-slate-100 px-5 py-4">
@@ -276,6 +311,55 @@ export function InvoiceModal({
                 </p>
               </div>
 
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="space-y-1.5">
+                  <label className="block text-sm font-semibold text-slate-700">Tipe Diskon</label>
+                  <select
+                    value={discountType}
+                    onChange={e => setDiscountType(e.target.value as DiscountType)}
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-medium text-slate-900 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                  >
+                    <option value="none">Tanpa Diskon</option>
+                    <option value="percent">Persen (%)</option>
+                    <option value="fixed">Nominal Tetap</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-sm font-semibold text-slate-700">Nilai Diskon</label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-slate-500">
+                      {discountType === "percent" ? "%" : "Rp"}
+                    </span>
+                    <input
+                      type="number"
+                      min="0"
+                      max={discountType === "percent" ? "100" : undefined}
+                      step={discountType === "percent" ? "1" : "1000"}
+                      value={discountValue}
+                      onChange={e => setDiscountValue(Number(e.target.value))}
+                      disabled={discountType === "none"}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm font-bold text-slate-900 disabled:cursor-not-allowed disabled:opacity-60 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-blue-100 bg-blue-50 p-3 text-sm">
+                <div className="flex items-center justify-between text-slate-700">
+                  <span>Subtotal</span>
+                  <span className="font-semibold">{formatRupiah(totals.subtotal)}</span>
+                </div>
+                <div className="mt-1 flex items-center justify-between text-slate-700">
+                  <span>{discountLabel}</span>
+                  <span className="font-semibold">-{formatRupiah(totals.discountAmount)}</span>
+                </div>
+                <div className="mt-2 flex items-center justify-between border-t border-blue-200 pt-2 text-base font-black text-blue-700">
+                  <span>Total akhir</span>
+                  <span>{formatRupiah(totals.totalAmount)}</span>
+                </div>
+              </div>
+
               {/* Catatan */}
               <div className="space-y-1.5">
                 <label className="block text-sm font-semibold text-slate-700">
@@ -304,7 +388,7 @@ export function InvoiceModal({
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600" />
                 <div>
                   <p className="text-sm font-bold text-emerald-700">Invoice berhasil dibuat!</p>
-                  <p className="text-xs text-emerald-600">{invoice.invoice_number} — {invoice.order_code ?? "-"} — {formatRupiah(invoice.price)}</p>
+                  <p className="text-xs text-emerald-600">{invoice.invoice_number} — {invoice.order_code ?? "-"} — {formatRupiah(invoice.total_amount ?? invoice.price)}</p>
                 </div>
               </div>
 

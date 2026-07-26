@@ -33,6 +33,19 @@ function formatPhone(phone: string) {
   return phone;
 }
 
+function parseInvoiceBreakdown(invoice: { notes: string | null; price: number }) {
+  const subtotalMatch = invoice.notes?.match(/Subtotal[:\s]*Rp?\s*([0-9.,]+)/i);
+  const discountMatch = invoice.notes?.match(/Diskon[:\s]*-?Rp?\s*([0-9.,]+)/i);
+  const discountTypeMatch = invoice.notes?.match(/Diskon\s+([0-9]+)%/i);
+
+  const subtotal = subtotalMatch ? Number(subtotalMatch[1].replace(/\D/g, "")) : invoice.price;
+  const discountAmount = discountMatch ? Number(discountMatch[1].replace(/\D/g, "")) : 0;
+  const totalAmount = invoice.price;
+  const discountLabel = discountTypeMatch ? `Diskon ${discountTypeMatch[1]}%` : (discountAmount > 0 ? "Diskon" : null);
+
+  return { subtotal, discountAmount, totalAmount, discountLabel };
+}
+
 // ─── Page ─────────────────────────────────────────────────────
 
 export default async function InvoicePage({
@@ -49,6 +62,7 @@ export default async function InvoicePage({
   if (!success || !invoice) notFound();
 
   const isPaid = invoice.payment_status === "paid";
+  const breakdown = parseInvoiceBreakdown(invoice);
 
   return (
     <>
@@ -62,21 +76,21 @@ export default async function InvoicePage({
         @page { margin: 20mm; }
       `}</style>
 
-      <div className="min-h-screen bg-slate-100 py-10 px-4">
+      <div className="min-h-screen bg-slate-100 px-3 py-5 sm:px-4 sm:py-8 lg:px-6">
         {/* Print button */}
-        <div className="no-print mx-auto mb-4 flex max-w-2xl justify-end gap-2">
+        <div className="no-print mx-auto mb-4 flex max-w-4xl justify-end gap-2">
           <PrintButton />
         </div>
 
         {/* Invoice card */}
-        <div className="invoice-card mx-auto max-w-2xl overflow-hidden rounded-2xl bg-white shadow-xl">
+        <div className="invoice-card mx-auto w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-xl">
 
           {/* Top accent bar */}
           <div className="h-2 bg-linear-to-r from-blue-600 to-violet-600" />
 
-          <div className="p-8">
+          <div className="p-4 sm:p-6 lg:p-8">
             {/* Header */}
-            <div className="flex items-start justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <div className="relative mb-3 h-12 w-12 overflow-hidden rounded-xl">
                   <Image src="/logo.avif" alt={BUSINESS_INFO.name} fill sizes="48px" className="object-cover" />
@@ -86,7 +100,7 @@ export default async function InvoicePage({
                 <p className="text-sm text-slate-500">{formatPhone(BUSINESS_INFO.phone)}</p>
                 <p className="text-sm text-slate-500">{BUSINESS_INFO.website}</p>
               </div>
-              <div className="text-right">
+              <div className="text-left sm:text-right">
                 <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">
                   Invoice
                 </p>
@@ -111,7 +125,7 @@ export default async function InvoicePage({
             <div className="my-6 h-px bg-slate-100" />
 
             {/* Bill to */}
-            <div className="mb-6 grid grid-cols-2 gap-6">
+            <div className="mb-6 grid gap-4 md:grid-cols-2">
               <div>
                 <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
                   Tagihan Kepada
@@ -131,8 +145,8 @@ export default async function InvoicePage({
             </div>
 
             {/* Service table */}
-            <div className="overflow-hidden rounded-xl border border-slate-200">
-              <table className="w-full">
+            <div className="overflow-x-auto rounded-xl border border-slate-200">
+              <table className="w-full min-w-[320px]">
                 <thead>
                   <tr className="bg-slate-50">
                     <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-500">
@@ -157,17 +171,27 @@ export default async function InvoicePage({
                     </td>
                     <td className="px-4 py-4 text-center text-sm text-slate-600">1</td>
                     <td className="px-4 py-4 text-right font-semibold text-slate-900">
-                      {formatRupiah(invoice.price)}
+                      {formatRupiah(breakdown.subtotal)}
                     </td>
                   </tr>
                 </tbody>
                 <tfoot>
+                  {breakdown.discountAmount > 0 && (
+                    <tr className="border-t border-slate-200 bg-slate-50">
+                      <td colSpan={2} className="px-4 py-3 text-right text-sm font-semibold text-slate-700">
+                        {breakdown.discountLabel ?? "Diskon"}
+                      </td>
+                      <td className="px-4 py-3 text-right text-sm font-semibold text-slate-700">
+                        -{formatRupiah(breakdown.discountAmount)}
+                      </td>
+                    </tr>
+                  )}
                   <tr className="border-t border-slate-200 bg-blue-50">
                     <td colSpan={2} className="px-4 py-3 text-right text-sm font-black text-slate-900">
                       Total
                     </td>
                     <td className="px-4 py-3 text-right text-lg font-black text-blue-700">
-                      {formatRupiah(invoice.price)}
+                      {formatRupiah(breakdown.totalAmount)}
                     </td>
                   </tr>
                 </tfoot>
@@ -197,7 +221,7 @@ export default async function InvoicePage({
                   </div>
                   <div className="flex items-center justify-between border-t border-blue-200 pt-2 mt-2">
                     <span className="text-sm font-bold text-slate-700">Total Transfer</span>
-                    <span className="text-base font-black text-blue-700">{formatRupiah(invoice.price)}</span>
+                    <span className="text-base font-black text-blue-700">{formatRupiah(breakdown.totalAmount)}</span>
                   </div>
                 </div>
                 <p className="mt-3 text-xs text-blue-600">

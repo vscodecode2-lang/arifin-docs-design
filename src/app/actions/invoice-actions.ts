@@ -8,6 +8,13 @@ import { SERVICE_LABELS } from "@/lib/invoice-config";
 
 // ─── Types ────────────────────────────────────────────────────
 
+export type DiscountType = "none" | "percent" | "fixed";
+
+export interface InvoiceDiscount {
+  type: DiscountType;
+  value: number;
+}
+
 export interface InvoiceData {
   id:             string;
   invoice_number: string;
@@ -20,6 +27,11 @@ export interface InvoiceData {
   service_type:   string;
   service_label:  string;
   price:          number;
+  subtotal?:      number;
+  discount_type?:  DiscountType;
+  discount_value?: number;
+  discount_amount?: number;
+  total_amount?:  number;
   notes:          string | null;
   payment_status: "unpaid" | "paid";
   paid_at:        string | null;
@@ -34,6 +46,20 @@ export interface GenerateInvoiceResult {
   error?:   string;
 }
 
+function calculateInvoiceTotals(basePrice: number, discount: InvoiceDiscount) {
+  const subtotal = Math.max(0, Math.round(basePrice));
+  let discountAmount = 0;
+
+  if (discount.type === "percent" && discount.value > 0) {
+    discountAmount = Math.round(subtotal * (discount.value / 100));
+  } else if (discount.type === "fixed" && discount.value > 0) {
+    discountAmount = Math.min(subtotal, Math.round(discount.value));
+  }
+
+  const totalAmount = Math.max(0, subtotal - discountAmount);
+  return { subtotal, discountAmount, totalAmount };
+}
+
 // ─── Generate Invoice ─────────────────────────────────────────
 
 export async function generateInvoice(
@@ -43,7 +69,8 @@ export async function generateInvoice(
   clientPhone: string,
   serviceType: string,
   price:       number,
-  notes?:      string
+  notes?:      string,
+  discount: InvoiceDiscount = { type: "none", value: 0 }
 ): Promise<GenerateInvoiceResult> {
   try {
     const supabase = await createServerSupabaseClient();
@@ -67,6 +94,15 @@ export async function generateInvoice(
     const invoiceNumber = numData as string;
 
     const serviceLabel = SERVICE_LABELS[serviceType] ?? serviceType;
+    const { subtotal, discountAmount, totalAmount } = calculateInvoiceTotals(price, discount);
+    const discountSummary = discount.type === "percent" && discount.value > 0
+      ? `Diskon ${discount.value}%`
+      : discount.type === "fixed" && discount.value > 0
+        ? `Diskon Rp ${discount.value.toLocaleString("id-ID")}`
+        : null;
+    const invoiceNotes = [notes?.trim(), discountSummary]
+      .filter((value): value is string => Boolean(value && value.trim()))
+      .join("\n");
 
     const { data: invoice, error } = await supabase
       .from("invoices")
@@ -79,8 +115,8 @@ export async function generateInvoice(
         client_phone:   clientPhone,
         service_type:   serviceType,
         service_label:  serviceLabel,
-        price,
-        notes:          notes ?? null,
+        price:          totalAmount,
+        notes:          invoiceNotes || null,
         payment_status: "unpaid",
       })
       .select("*")
@@ -91,6 +127,11 @@ export async function generateInvoice(
     const invoiceWithOrderCode: InvoiceData = {
       ...(invoice as InvoiceData),
       order_code: (invoice as InvoiceData).order_code ?? clientRow?.order_code ?? null,
+      subtotal,
+      discount_type: discount.type,
+      discount_value: discount.value,
+      discount_amount: discountAmount,
+      total_amount: totalAmount,
     };
 
     // Update status klien ke completed
