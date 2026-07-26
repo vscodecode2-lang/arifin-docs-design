@@ -10,6 +10,7 @@ export interface ActionResult<T = undefined> {
   fieldErrors?: Record<string, string>;
   data?: T;
   orderCode?: string;
+  redirectUrl?: string;
 }
 
 /**

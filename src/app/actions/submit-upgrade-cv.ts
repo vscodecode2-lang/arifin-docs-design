@@ -7,6 +7,7 @@ import { NameSchema, EmailSchema, PhoneSchema, sanitizeText } from "@/lib/valida
 import { generateOrderCode } from "@/lib/order-utils";
 import { logger } from "@/lib/logger";
 import { isRecentDuplicateSubmission, RATE_LIMIT_MESSAGE } from "@/lib/rate-limit";
+import { generateWhatsAppLink } from "@/lib/utils";
 import type { ActionResult } from "@/types/common";
 
 // ─── Konstanta ────────────────────────────────────────────────────────────────
@@ -197,8 +198,14 @@ export async function submitUpgradeCvAction(formData: FormData): Promise<ActionR
       return { success: false, error: "Gagal menyimpan detail permintaan. Silakan coba lagi." };
     }
 
+    const redirectUrl = generateWhatsAppLink(
+      "Upgrade CV Lama",
+      process.env.NEXT_PUBLIC_ADMIN_WHATSAPP ?? "6285801193410",
+      orderCode
+    );
+
     logger.info("Upgrade CV: order baru berhasil dibuat", { orderCode });
-    return { success: true, orderCode };
+    return { success: true, orderCode, redirectUrl };
   } catch (err) {
     logger.error("Upgrade CV: kesalahan tak terduga", err);
     return { success: false, error: "Terjadi kesalahan server. Silakan coba lagi." };

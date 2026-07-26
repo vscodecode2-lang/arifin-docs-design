@@ -92,10 +92,10 @@ export function UpgradeCvForm() {
         return;
       }
 
-      // Redirect ke WhatsApp dengan kode order — konsisten dengan form lain
-      // (NPWP, Legal, dll): navigasi langsung, tidak ada layar "submitted"
-      // yang tanggung karena redirect sudah terjadi lebih dulu.
-      window.location.href = generateWhatsAppLink("Upgrade CV Lama", ADMIN_WA, res.orderCode);
+      // Redirect ke WhatsApp dengan kode order yang sama seperti yang disimpan di server.
+      const waUrl = res.redirectUrl ?? generateWhatsAppLink("Upgrade CV Lama", ADMIN_WA, res.orderCode);
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+      window.location.assign(waUrl);
     } catch {
       setSubmitError("Gagal menghubungi server. Silakan coba lagi.");
       setIsLoading(false);
