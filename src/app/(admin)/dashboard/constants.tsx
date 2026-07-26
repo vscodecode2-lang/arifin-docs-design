@@ -1,5 +1,5 @@
 import {
-  FileText, Mail, Building2, CreditCard, GraduationCap, Database, Sparkles,
+  FileText, Mail, Building2, CreditCard, GraduationCap, Database, Sparkles, RefreshCw,
 } from "lucide-react";
 import type { ClientStatus } from "@/app/actions/dashboardactions";
 
@@ -11,6 +11,7 @@ export const SERVICE_META: Record<string, { label: string; icon: React.ReactNode
   Akademik:     { label: "Akademik",      icon: <GraduationCap className="h-3 w-3" />, color: "bg-pink-100 text-pink-700" },
   "Data Entry": { label: "Data Entry",    icon: <Database className="h-3 w-3" />,      color: "bg-slate-100 text-slate-600" },
   "Paket Hemat": { label: "Paket Hemat", icon: <Sparkles className="h-3 w-3" />,     color: "bg-rose-100 text-rose-700" },
+  "Upgrade CV": { label: "Upgrade CV",   icon: <RefreshCw className="h-3 w-3" />,    color: "bg-cyan-100 text-cyan-700" },
 };
 
 export const STATUS_META: Record<ClientStatus, { label: string; badge: string; dot: string }> = {

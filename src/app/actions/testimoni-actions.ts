@@ -84,6 +84,8 @@ export async function submitTestimoni(formData: FormData): Promise<TestimoniActi
     const photo_type   = formData.get("photo_type")   as string;
     const photo_data   = formData.get("photo_data")   as string | null;
     const ratingsJson  = formData.get("ratings")      as string;
+    const client_phone = (formData.get("client_phone") as string) ?? null;
+    const client_email = (formData.get("client_email") as string) ?? null;
 
     // Validasi server-side
     if (!client_id || !client_name || !service_type)
@@ -135,6 +137,21 @@ export async function submitTestimoni(formData: FormData): Promise<TestimoniActi
       photo_data:   photo_type === "upload" ? photo_data : null,
       status:       "pending",
     });
+
+    // Jika client_phone atau client_email disertakan, perbarui tabel clients
+    try {
+      const updatePayload: Record<string, string | null> = {};
+      if (client_phone) updatePayload.phone_number = client_phone.trim();
+      if (client_email) updatePayload.email = client_email.trim().toLowerCase();
+      if (Object.keys(updatePayload).length > 0) {
+        await supabase
+          .from("clients")
+          .update(updatePayload)
+          .eq("id", client_id);
+      }
+    } catch (e) {
+      // Non-fatal: jangan gagalkan submit testimoni hanya karena update contact gagal
+    }
 
     if (insertError) {
       if (insertError.code === "23505")

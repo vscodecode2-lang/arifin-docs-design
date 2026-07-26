@@ -21,6 +21,7 @@ const SERVICE_COLOR: Record<string, string> = {
   NPWP:         "bg-emerald-100 text-emerald-700",
   Akademik:     "bg-pink-100 text-pink-700",
   "Data Entry": "bg-slate-100 text-slate-600",
+  "Upgrade CV": "bg-cyan-100 text-cyan-700",
 };
 
 function formatDate(iso: string) {

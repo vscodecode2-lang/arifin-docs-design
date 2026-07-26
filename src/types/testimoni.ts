@@ -48,6 +48,12 @@ export const SERVICE_QUESTIONS: Record<string, RatingQuestion[]> = {
     { id: "kecepatan",        label: "Kecepatan pengerjaan" },
     { id: "responsivitas",    label: "Responsivitas & komunikasi admin" },
   ],
+  "Upgrade CV": [
+    { id: "kualitas_hasil",   label: "Kualitas hasil upgrade CV" },
+    { id: "relevansi_keyword",label: "Relevansi keyword ATS setelah diupgrade" },
+    { id: "kecepatan",        label: "Kecepatan pengerjaan" },
+    { id: "responsivitas",    label: "Responsivitas & komunikasi admin" },
+  ],
 };
 
 export const SERVICE_LIST = Object.keys(SERVICE_QUESTIONS);
@@ -80,6 +86,8 @@ export interface VerifyResult {
   found:        boolean;
   client_id?:   string;
   client_name?: string;
+  client_phone?: string;
+  client_email?: string;
   services?:    string[];  // layanan yang pernah digunakan
   error?:       string;
 }

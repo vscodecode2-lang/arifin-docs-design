@@ -416,6 +416,7 @@ function RenderGeneric({ detail }: { detail: Record<string, unknown> }) {
         .filter(([k]) => !SKIP.includes(k))
         .map(([k, v]) => {
           const isObj = typeof v === "object" && v !== null;
+          const isUrl = typeof v === "string" && /^https?:\/\//.test(v);
           return (
             <div key={k} className="py-2 border-b border-slate-100 last:border-0">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
@@ -425,6 +426,10 @@ function RenderGeneric({ detail }: { detail: Record<string, unknown> }) {
                 ? <pre className="rounded-lg bg-slate-50 p-3 text-xs text-slate-700 overflow-x-auto whitespace-pre-wrap">
                     {JSON.stringify(v, null, 2)}
                   </pre>
+                : isUrl
+                ? <a href={v as string} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-blue-600 underline hover:text-blue-700">
+                    Buka file
+                  </a>
                 : <span className="text-sm text-slate-800">{val(v)}</span>
               }
             </div>
@@ -638,7 +643,7 @@ export function DetailModal({
   const SERVICE_LABEL: Record<string, string> = {
     CV: "CV ATS", Lamaran: "Surat Lamaran", Legal: "Surat Legal",
     NPWP: "NPWP", Akademik: "Akademik", "Data Entry": "Data Entry",
-    "Paket Hemat": "Paket Hemat",
+    "Paket Hemat": "Paket Hemat", "Upgrade CV": "Upgrade CV",
   };
 
   return (

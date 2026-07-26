@@ -68,7 +68,8 @@ export type ServiceType =
   | "NPWP"
   | "Akademik"
   | "Data Entry"
-  | "Paket Hemat";
+  | "Paket Hemat"
+  | "Upgrade CV";
 
 export type OrderStatus =
   | "pending"

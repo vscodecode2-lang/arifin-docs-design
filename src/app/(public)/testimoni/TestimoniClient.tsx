@@ -19,6 +19,7 @@ const SERVICE_COLOR: Record<string, string> = {
   NPWP:         "bg-emerald-100 text-emerald-700",
   Akademik:     "bg-pink-100 text-pink-700",
   "Data Entry": "bg-slate-100 text-slate-600",
+  "Upgrade CV": "bg-cyan-100 text-cyan-700",
 };
 
 const AVATAR_COLORS = [
@@ -162,6 +163,10 @@ function TestimoniCard({ t }: { t: Testimoni }) {
 function SubmitModal({ onClose }: { onClose: () => void }) {
   const [modalStep, setModalStep] = useState<"verify"|"service"|"rating"|"text"|"photo"|"success">("verify");
   const [identifier, setIdentifier] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
   const [verifyError, setVerifyError] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -188,6 +193,9 @@ function SubmitModal({ onClose }: { onClose: () => void }) {
     upd("client_id", res.client_id);
     upd("client_name", res.client_name);
     setFormData(p => ({ ...p, availableServices: res.services } as typeof p & { availableServices: string[] }));
+    // Store optional contact info to prefill when submitting testimoni
+    setContactPhone(res.client_phone ?? "");
+    setContactEmail(res.client_email ?? "");
     setModalStep("service");
   };
 
@@ -286,6 +294,9 @@ function SubmitModal({ onClose }: { onClose: () => void }) {
     fd.append("ratings",      JSON.stringify(formData.ratings));
     fd.append("highlight",    formData.highlight!);
     fd.append("suggestion",   formData.suggestion ?? "");
+    // Include optional contact details for moderation / follow-up
+    if (contactPhone.trim()) fd.append("client_phone", contactPhone.trim());
+    if (contactEmail.trim()) fd.append("client_email", contactEmail.trim());
     fd.append("photo_type",   formData.photo_type ?? "initial");
     if (formData.photo_type === "upload" && photoBlob)
       fd.append("photo_data", photoBlob);
@@ -391,6 +402,44 @@ function SubmitModal({ onClose }: { onClose: () => void }) {
                     <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />{verifyError}
                   </p>
                 )}
+              </div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-1.5">Nomor Telepon (opsional)</label>
+                  <input
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                    placeholder="08123456789"
+                    value={contactPhone}
+                    onChange={e => setContactPhone(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-1.5">Email (opsional)</label>
+                  <input
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                    placeholder="nama@email.com"
+                    value={contactEmail}
+                    onChange={e => setContactEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Nomor Telepon (opsional)</label>
+                <input
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                  placeholder="08123456789"
+                  value={contactPhone}
+                  onChange={e => setContactPhone(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Email (opsional)</label>
+                <input
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                  placeholder="nama@example.com"
+                  value={contactEmail}
+                  onChange={e => setContactEmail(e.target.value)}
+                />
               </div>
               <button onClick={handleVerify} disabled={isVerifying}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 py-2.5 text-sm font-bold text-white hover:bg-blue-800 disabled:opacity-60 transition-colors">

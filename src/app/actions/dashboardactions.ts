@@ -167,6 +167,7 @@ export async function getClientDetail(
       Akademik:      "akademik_submissions",
       "Data Entry":  "data_entry_submissions",
       "Paket Hemat": "paket_hemat_submissions",
+      "Upgrade CV":  "upgrade_cv_submissions",
     };
 
     const table = tableMap[serviceType];

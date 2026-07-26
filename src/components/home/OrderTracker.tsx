@@ -46,6 +46,7 @@ function formatServiceType(type: string) {
     Akademik: "Pendampingan Akademik",
     "Data Entry": "Data Entry",
     "Paket Hemat": "Paket Hemat",
+    "Upgrade CV": "Upgrade CV Lama",
   };
   return map[type] ?? type;
 }

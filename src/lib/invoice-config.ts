@@ -24,6 +24,7 @@ export const DEFAULT_PRICES: Record<string, number> = {
   "NPWP":        30_000,
   "Akademik":    0,
   "Data Entry":  0,
+  "Upgrade CV":  25_000,
 };
 
 // ── Label layanan ────────────────────────────────────────────
@@ -35,4 +36,5 @@ export const SERVICE_LABELS: Record<string, string> = {
   "NPWP":        "Pendaftaran NPWP Online",
   "Akademik":    "Pendampingan Akademik",
   "Data Entry":  "Jasa Data Entry",
+  "Upgrade CV":  "Upgrade CV Lama",
 };
